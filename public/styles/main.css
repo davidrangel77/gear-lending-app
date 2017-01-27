@@ -1,0 +1,223 @@
+* {
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+}
+a {
+  text-decoration: none;
+}
+#wrap {
+  min-height: 100%;
+}
+#main {
+  min-height: 100vh;
+  overflow: auto;
+  padding-bottom: 80px; /* must be same height as the footer */
+}
+#footer {
+  position: relative;
+  margin-top: -80px; /* negative value of footer height */
+  height: 80px;
+  clear: both;
+}
+.body {
+  margin: 0;
+  font-family: Lucida Grande;
+  font-weight: lighter;
+}
+.content {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: auto;
+}
+.resumeContent {
+  width: 46%;
+  margin-left: 15%;
+  margin-right: auto;
+}
+.resumeContentRight {
+  float: right;
+  width: 32%;
+  margin-top: -19px;
+}
+.resumeDates {
+  font-weight: normal;
+  color: grey;
+}
+.resumeWhole{
+  margin-top: 50px;
+}
+.pageHeadingTitle {
+  color: white;
+  font-size: 36px;
+  border-bottom: solid 2px grey;
+  text-align-last: center;
+  background-color: lightgrey;
+  margin: 0;
+  height: 80px;
+  line-height: 40px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.footerLinks {
+  text-decoration: none;
+  font-size: 16px;
+  margin-right: 1%;
+  margin-left: 1%;
+  padding: 8px 16px;
+  background-color: grey;
+  color: white;
+  border-radius: 4px;
+}
+.footerSection {
+  bottom: 0;
+  border-top: solid 2px grey;
+  bottom: 0;
+  width: 100%;
+  height: 80px;
+  line-height: 40px;
+  text-align: center;
+  background-color: lightgrey;
+}
+.footerList {
+  background-color: lightgrey;
+  padding-left: 0;
+  margin-top: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 0;
+}
+.resumeText {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.resumeHeaderText {
+  margin-top: 0;
+  margin-bottom: 5px;
+  margin-left: 20px;
+}
+.resumeHeaderTextName {
+  font-weight: bold;
+}
+.resumeContentEducation {
+
+}
+.techSkillsList {
+  list-style: none;
+  margin-left: 20px;
+  padding: 0;
+}
+.italic {
+  font-style: italic;
+}
+.blogWhole {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+}
+.blogPostTitle {
+  color: grey;
+}
+.blogPostText {
+  margin-left: 20px;
+}
+.projectsWhole {
+  width: 80%;
+  margin-left: 10%;
+  margin-right: auto;
+  margin-top: 50px;
+}
+.landingWhole {
+  width: 60%;
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.landingTitle {
+  margin: 25px 0;
+  text-align: center;
+}
+.landingPageText {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+  margin-bottom: 50px;
+  font-size: 18px;
+  text-align: center;
+  width: 80%;
+}
+.landingPageWelcome {
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 75px;
+}
+.projectsList {
+  list-style: none;
+}
+.projectsName {
+  margin-bottom: 10px;
+}
+
+/* setting CSS for mobile device*/
+@media only screen and (max-device-width: 500px) {
+  .landingTitle {
+    font-size: 3.5rem;
+  }
+  .landingPageText {
+    font-size: 3rem;
+    width: 100%;
+  }
+  .resumeText {
+    font-size: 1rem;
+  }
+  .projectsList {
+    font-size: 2rem;
+  }
+  .projectsName {
+    margin-bottom: 3rem;
+  }
+  .blogPostTitle {
+    font-size: 2rem;
+    color: grey;
+  }
+  .blogPostText {
+    font-size: 2rem;
+    margin-left: 20px;
+  }
+  .footerLinks {
+    display: block;
+    text-decoration: none;
+    font-size: 2.5rem;
+    margin-right: 2%;
+    margin-left: 2%;
+    margin-bottom: 2%;
+    padding: 12px 24px;
+    background-color: grey;
+    color: white;
+    border-radius: 4px;
+  }
+  .footerSection {
+    bottom: 0;
+    border-top: solid 2px grey;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    line-height: 40px;
+    text-align: center;
+    background-color: lightgrey;
+  }
+  .footerList {
+    background-color: lightgrey;
+    padding-left: 0;
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 0;
+    height: 335px;
+  }
+}
