@@ -3,9 +3,12 @@ import { render } from 'react-dom'
 import { Router, Route, hashHistory } from 'react-router'
 import App from './app'
 import Landing from './landing'
-import Resume from './resume'
-import Blog from './blog'
-import Projects from './projects'
+import GearOptions from './gearOptions'
+import Bodies from './bodies'
+import Lenses from './lenses'
+import Lights from './lights'
+import Misc from './misc'
+import Lend from './lend'
 
 
 render(
@@ -13,9 +16,12 @@ render(
     <Router onUpdate={() => window.scrollTo(0, 0)} history={hashHistory}>
       <Route component={App}>
         <Route path="/" component={ Landing } />
-        <Route path="/resume" component={ Resume } />
-        <Route path="/blog" component={ Blog } />
-        <Route path="/projects" component={ Projects } />
+        <Route path="/gearOptions" component={ GearOptions } />
+        <Route path="/bodies" component={ Bodies } />
+        <Route path="/lenses" component={ Lenses } />
+        <Route path="/lights" component={ Lights } />
+        <Route path="/misc" component={ Misc } />
+        <Route path="/lend" component={ Lend } />
       </Route>
     </Router>
   ),

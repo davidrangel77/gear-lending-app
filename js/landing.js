@@ -1,19 +1,27 @@
 import React from 'react'
 import { Link } from 'react-router'
-import Footer from './footer'
+import { hashHistory } from 'react-router'
 
 export default React.createClass({
+  linkToLend(){
+    hashHistory.push("/lend")
+  },
+  linkToGearOptions(){
+    hashHistory.push("/gearOptions")
+  },
+
   render() {
     return (
-      <section className="contentSection">
-        <h1 className="pageHeadingTitle">A Short Website About D Rangel</h1>
-        <div className="landingWhole">
-          <h2 className="landingTitle">Jr. Developer in training; San Antonio, Tx</h2>
-          <p className="landingPageWelcome">Welcome!</p>
-          <p className="landingPageText">
-            My name is David Rangel and I am an aspiring front-end developer currently attending the Front End Engineering course at <a href="https://www.theironyard.com/">The Ironyard</a> in San Antonio, Tx.<br/><br/>
-            I have had many careers and experiences, but I believe I am on the path to the most successful time in my professional life.<br/><br/>
-        Please use the buttons below to navigate through these pages. </p>
+      <section className="landingPage" >
+        <div className="landingButtons">
+          <div className="landingButtonLend hvr-underline-from-center"
+                onClick={this.linkToLend}>
+            <p className="buttonText">LEND</p>
+          </div>
+          <div className="landingButtonBorrow hvr-underline-from-center"
+                onClick={this.linkToGearOptions}>
+            <p className="buttonText">BORROW</p>
+          </div>
         </div>
       </section>
     )
