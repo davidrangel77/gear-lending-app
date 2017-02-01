@@ -16,11 +16,11 @@ export default React.createClass({
         <div className="landingButtons">
           <div className="landingButtonLend hvr-underline-from-center"
                 onClick={this.linkToLend}>
-            <p className="buttonText">LEND</p>
+            <p className="landingButtonText">LEND</p>
           </div>
           <div className="landingButtonBorrow hvr-underline-from-center"
                 onClick={this.linkToGearOptions}>
-            <p className="buttonText">BORROW</p>
+            <p className="landingButtonText">BORROW</p>
           </div>
         </div>
       </section>

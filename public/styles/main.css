@@ -17,43 +17,68 @@ Link {
 #main {
   min-height: 100vh;
   overflow: auto;
-  padding-bottom: 80px; /* must be same height as the footer */
+  padding-bottom: 5em; /* must be same height as the footer */
 }
 #footer {
   position: relative;
-  margin-top: -80px; /* negative value of footer height */
-  height: 80px;
+  margin-top: -5em; /* negative value of footer height */
+  height: 5em;
   clear: both;
 }
 .body {
   background-color: #D2D7D3;
   font-family: sans-serif;
 }
-.headerBranding {
-  color: white;
-}
-.headerBrandingTitle {
-  margin: 0;
-}
-.headerBrandingText {
-
-}
-.footerBackground {
-  border-top: solid 4px black;
-  background-color: #22313F;
-  height: 80px;
-}
+/********HEADER ***********/
 .headerBackground {
   border-bottom: solid 4px black;
   background-color: #22313F;
-  height: 80px;
+  height: 5em;
 }
+.headerBranding {
+  display: inline-block;
+  padding-left: 1em;
+  padding-top: .5em;
+  color: white;
+  width: 19em;
+}
+.headerBrandingTitle {
+  display: inline-block;
+  margin: 0;
+  font-size: 2em;
+  font-weight: lighter;
+}
+.headerBrandingText {
+  display: inline-block;
+  margin: 0;
+  padding-left: 1em;
+  font-weight: lighter;
+}
+.logInButton{
+
+}
+.homeLink {
+  color: white;
+  float: right;
+  margin-right: 2em;
+  margin-top: 2em;
+}
+/********FOOTER ***********/
+.footerBackground {
+  border-top: solid 4px black;
+  background-color: #22313F;
+  height: 5em;
+}
+/********LANDING PAGE ***********/
 .landingPage {
   background: url("/styles/landingImage.jpg");
   background-size: cover;
   position: relative;
   height: 76.5vh;
-  width: 100%;
+}
+.backgroundImage{
+  height: 107%;
+  width: 102%;
 }
 .landingButtons {
   width: 800px;
@@ -117,7 +142,7 @@ Link {
 .landingButtonBorrow:active {
   opacity: 1.0;
 }
-.buttonText {
+.landingButtonText {
   color: white;
   margin: 0;
   display: inline-block;
@@ -127,9 +152,123 @@ Link {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.backgroundImage{
-  height: 107%;
-  width: 102%;
+/************LEND Page******/
+.lendPage{
+  position: relative;
+  background: url("/styles/landingImage.jpg");
+  background-size: cover;
+  position: relative;
+  height: 76.5vh;
+}
+.lendForm {
+  display: inline-block;
+  background-color: #6C7A89;
+  border-radius: 20px;
+  box-shadow: 5px 5px 20px;
+  opacity: 0.90;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 2em;
+  padding-top: 1.5em;
+  position: absolute;;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  overflow: scroll;
+  max-height: 70vh;
+}
+.lendFormInputUserInfo {
+  background-color: white;
+  opacity: 1.0;
+  border: solid 2px grey;
+  border-radius: 4px;
+  display: block;
+  font-size: 1em;
+  height: 2em;
+  margin-bottom: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 40%;
+}
+.lendFormInputItem {
+  border-radius: 4px;
+  display: block;
+  font-size: 1em;
+  height: 2em;
+  margin-bottom: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 80%;
+}
+.lendFormItem {
+  border: solid 2px grey;
+  border-right: 1px grey;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  display: inline-block;
+  font-size: 1em;
+  height: 2em;
+  margin-bottom: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 90%;
+}
+.addItem {
+  border: solid 2px grey;
+  border-left: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  display: inline-block;
+  font-size: 1em;
+  height: 2em;
+  margin-bottom: 1em;
+  margin-left: -4px;
+  margin-right: auto;
+  padding-top: 0;
+  padding-bottom: 0;
+  text-align: center;
+  width: 9%;
+  -webkit-appearance: none;
+}
+.itemListDisplay {
+  background-color: white;
+  border: solid 2px grey;
+  border-radius: 4px;
+  width: 79%;
+  height: 7em;
+  margin-bottom: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: scroll;
+
+}
+.itemDisplayList{
+  font-style: italic;
+  font-family: sans-serif;
+  display: inline-block;
+  margin: 0;
+}
+.submitLendForm {
+  background-color: #22313F;
+  border: solid 2px grey;
+  border-radius: 4px;
+  color: red;
+  display: block;
+  font-size: 1em;
+  height: 3em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 9.5em;
+  -webkit-appearance: none;
 }
 
 @media only screen and (min-width: 500px ) {

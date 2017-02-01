@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link} from 'react-router'
 
 export default React.createClass({
   render() {
@@ -8,6 +9,7 @@ export default React.createClass({
           <h1 className="headerBrandingTitle">Gear Grow</h1>
           <p className="headerBrandingText">...a place to share</p>
         </div>
+        <Link className="homeLink" to="/">HOME</Link>
       </section>
     )
   }
