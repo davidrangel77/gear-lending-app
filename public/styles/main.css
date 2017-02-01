@@ -53,6 +53,7 @@ Link {
   background-size: cover;
   position: relative;
   height: 76.5vh;
+  width: 100%;
 }
 .landingButtons {
   width: 800px;
