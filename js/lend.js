@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 import { ajax } from 'jquery'
+import { hashHistory} from 'react-router'
 
 export default React.createClass({
 
@@ -10,7 +11,8 @@ export default React.createClass({
       zip: 0,
       email: "",
       phone: 0,
-      items:[],
+      item: "",
+      type: ""
     }
   },
   onNameChange(e){
@@ -25,18 +27,23 @@ export default React.createClass({
   onPhoneChange(e){
     this.setState({phone:e.target.value})
   },
-  onItemAdd(e){
-    e.preventDefault()
-    var currentItems = this.state.items
-    var newItems = this.state.items.concat(this.refs.newItemName.value)
-    this.setState({items:newItems})
-    this.refs.listItemsDisplay.insertAdjacentHTML("afterbegin",
-      `<pre class="itemDisplayList">${this.refs.newItemName.value}, </pre>`)
+  onTypeChange(){
+    this.setState({type:this.refs.selectType.value})
+  },
+  submitFormDone(){
+    hashHistory.push("/gearOptions")
+
   },
   submitLendForm(e){
     e.preventDefault()
+    var currentItems = this.state.items
+    var itemType = this.refs.selectType.value
+    var newItem = this.refs.newItemName.value
+    this.setState({item:newItem})
+    this.setState({type:itemType})
+    this.refs.listItemsDisplay.insertAdjacentHTML("afterbegin",
+      `<pre class="itemDisplayList">${this.refs.selectType.value},${this.refs.newItemName.value} </pre>`)
     console.log(this.state);
-    this.refs.lendForm.reset()
 
     ajax({
       url: "https://tiny-tiny.herokuapp.com/collections/davidRangel-gearAppTesting",
@@ -47,7 +54,10 @@ export default React.createClass({
         Zip: this.state.zip,
         Email: this.state.email,
         Phone: this.state.phone,
-        ItemsList: this.state.items
+        Items:{
+          item: this.state.item,
+          type: this.state.type
+        }
       },
       success: this.onPostJsonLoaded,
       error: this.jsonNotLoaded
@@ -80,20 +90,26 @@ export default React.createClass({
             onChange={this.onPhoneChange}/>
           <div ref="lendForm">
             <div className="lendFormInputItem">
+              <select className="selectItemCategory" name="equipType" ref="selectType" onChange={this.onTypeChange}>
+                <option value="select">Select Type</option>
+                <option value="Lens">Lens</option>
+                <option value="Body">Body</option>
+                <option value="Lighting">Lighting</option>
+                <option value="Misc">Misc.</option>
+              </select>
               <input className="lendFormItem"
                 type="text"
                 name="userGear"
-                placeholder="Enter item and press 'ADD'"
+                placeholder="Enter item name and press 'ADD TO LIST'"
                 ref="newItemName"/>
-              <input className="addItem"
-                type="submit"
-                value="ADD"
-                onClick={this.onItemAdd}/>
             </div>
           </div>
           <div className="itemListDisplay" ref="listItemsDisplay">
           </div>
-          <input className="submitLendForm" type="submit" name="submit" value="SUBMIT" onClick={this.submitLendForm}/>
+          <div className="formButtons">
+            <input className="submitLendForm" type="submit" name="submit" value="ADD TO LIST" onClick={this.submitLendForm}/>
+            <input className="submitFormDone" type="button" name="done" value="DONE" onClick={this.submitFormDone}/>
+          </div>
         </form>
       </section>
     )

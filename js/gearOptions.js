@@ -1,11 +1,32 @@
 import React from 'react'
 import { Link } from 'react-router'
+import { ajax } from 'jquery'
 
 export default React.createClass({
+
+  componentDidMount (){
+    ajax({
+      url: "https://tiny-tiny.herokuapp.com/collections/davidRangel-gearAppTesting",
+      datatype: "json",
+      success: this.initialJsonLoaded,
+      error: this.jsonNotLoaded
+    })
+  },
+  getInitialState (){
+    return {
+      jsonData: []
+    }
+  },
+  initialJsonLoaded(response){
+
+  },
+
   render() {
     return (
       <section>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Culinary_fruits_front_view.jpg" style={{width:"100vw"}}></img>
+        <div className="gearListBackground">
+
+        </div>
       </section>
     )
   }

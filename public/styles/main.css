@@ -218,26 +218,26 @@ Link {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  width: 90%;
+  width: 78%;
 }
-.addItem {
+.selectItemCategory{
+  display: inline-block;
   border: solid 2px grey;
   border-left: 0;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
   display: inline-block;
   font-size: 1em;
   height: 2em;
   margin-bottom: 1em;
-  margin-left: -4px;
-  margin-right: auto;
-  padding-top: 0;
-  padding-bottom: 0;
+  margin-right: 0px;
+  margin-left: auto;
   text-align: center;
-  width: 9%;
-  -webkit-appearance: none;
+  width: 20%;
+  cursor: pointer;
+  -webkit-appearance: menulist;
 }
 .itemListDisplay {
   background-color: grey;
@@ -249,26 +249,47 @@ Link {
   margin-left: auto;
   margin-right: auto;
   overflow: scroll;
-
 }
 .itemDisplayList{
   font-style: italic;
   font-family: sans-serif;
-  display: inline-block;
+  display: block;
   margin: 0;
+  text-align: center;
+}
+.formButtons{
+  width: 20em;
+  margin-left: auto;
+  margin-right: auto;
 }
 .submitLendForm {
   background-color: #22313F;
   border: solid 2px grey;
   border-radius: 4px;
   color: lightgreen;
-  display: block;
+  display: inline-block;
   font-size: 1em;
   height: 3em;
   margin-left: auto;
   margin-right: auto;
   width: 9.5em;
   -webkit-appearance: none;
+}
+.submitFormDone {
+  background-color: #22313F;
+  border: solid 2px grey;
+  border-radius: 4px;
+  color: lightblue;
+  display: inline-block;
+  font-size: 1em;
+  height: 3em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 9.5em;
+  -webkit-appearance: none;
+}
+.currentItem {
+  display: inline-block;
 }
 
 @media only screen and (min-width: 500px ) {
