@@ -240,7 +240,7 @@ Link {
   -webkit-appearance: none;
 }
 .itemListDisplay {
-  background-color: white;
+  background-color: grey;
   border: solid 2px grey;
   border-radius: 4px;
   width: 79%;
@@ -261,7 +261,7 @@ Link {
   background-color: #22313F;
   border: solid 2px grey;
   border-radius: 4px;
-  color: red;
+  color: lightgreen;
   display: block;
   font-size: 1em;
   height: 3em;

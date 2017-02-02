@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
+import { ajax } from 'jquery'
 
 export default React.createClass({
 
@@ -35,12 +36,28 @@ export default React.createClass({
   submitLendForm(e){
     e.preventDefault()
     console.log(this.state);
+    this.refs.lendForm.reset()
+
+    ajax({
+      url: "https://tiny-tiny.herokuapp.com/collections/davidRangel-gearAppTesting",
+      datatype: "json",
+      type: "POST",
+      data: {
+        User: this.state.name,
+        Zip: this.state.zip,
+        Email: this.state.email,
+        Phone: this.state.phone,
+        ItemsList: this.state.items
+      },
+      success: this.onPostJsonLoaded,
+      error: this.jsonNotLoaded
+    })
   },
 
   render() {
     return (
       <section className="lendPage">
-        <form className="lendForm">
+        <form className="lendForm" ref="lendForm">
           <input className="lendFormInputUserInfo"
             type="text"
             name="userName"
@@ -75,7 +92,6 @@ export default React.createClass({
             </div>
           </div>
           <div className="itemListDisplay" ref="listItemsDisplay">
-
           </div>
           <input className="submitLendForm" type="submit" name="submit" value="SUBMIT" onClick={this.submitLendForm}/>
         </form>
