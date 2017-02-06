@@ -54,14 +54,39 @@ Link {
   padding-left: 1em;
   font-weight: lighter;
 }
-.logInButton{
-
+.nav__currentUserImage {
+  border: transparent;
+  border-radius: 50%;
+  position: absolute;
+  top: 1.5rem;
+  right: 10.5rem;
+  width: 2rem;
+}
+.nav__signIn, .nav__signOut {
+    background-color: #6C7A89;
+    border: solid 1px;
+    border-radius: 0.4rem;
+    color: rgb(245, 245, 245);
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    position: absolute;
+    top: 1.5rem;
+    right: 5rem;
+}
+.nav__signIn:hover, .nav__signOut:hover {
+    background-color: #22313F;
+    color: white;
+    cursor: pointer;
+    transition: color 0.6s, background-color 0.6s;
+}
+.nav__signOut--hide {
+  display: none;
 }
 .homeLink {
   color: white;
-  float: right;
-  margin-right: 2em;
-  margin-top: 2em;
+  position: absolute;
+  top: 2rem;
+  right: 1rem;
 }
 /********FOOTER ***********/
 .footerBackground {
@@ -290,6 +315,79 @@ Link {
 }
 .currentItem {
   display: inline-block;
+}
+/***********BORROW PAGE*****/
+.gearOptionsPage{
+  background: url("/styles/landingImage.jpg");
+  background-size: cover;
+  position: relative;
+  height: 76.5vh;
+}
+.listPageItems{
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: scroll;
+}
+.listingPageData {
+  display: inline-block;
+  margin-left: 1em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+.listingPageDataContact {
+  background-color: white;
+  border: solid 1px grey;
+  border-radius: 8px;
+  color: green;
+  display: inline-block;
+  margin-left: 1em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  padding: .25em 1em;
+}
+.gearListPanesAll{
+  position: relative;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.gearListPane {
+  margin: 1em;
+  border-radius: 10px;
+  background-color: lightgrey;
+  display: inline-block;
+  height: 14em;
+  width: 29.75em;
+  overflow: scroll;
+}
+.gearListPaneTitle {
+  text-align: center;
+}
+
+/********MODAL********/
+.modalPosition {
+  display: inline-block;
+  background-color: white;
+  position: absolute;;
+  overflow: scroll;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-height: 100%;
+}
+
+.modalBackground {
+  background-color: lightgrey;
+  width: 10em;
+  text-align: center;
+}
+.visible {
+  display: block;
+}
+
+.hidden {
+  display: none;
 }
 
 @media only screen and (min-width: 500px ) {

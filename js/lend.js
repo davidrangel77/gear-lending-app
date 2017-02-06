@@ -4,6 +4,11 @@ import { ajax } from 'jquery'
 import { hashHistory} from 'react-router'
 
 export default React.createClass({
+  getDefaultProps() {
+    return {
+      user: { authed: false }
+    }
+  },
 
   getInitialState() {
     return {
@@ -16,13 +21,16 @@ export default React.createClass({
     }
   },
   onNameChange(e){
-    this.setState({name:e.target.value})
+    var currentName = e.target.value
+    this.setState({name:currentName})
   },
   onZipChange(e){
-    this.setState({zip:e.target.value})
+    var currentZip = e.target.value
+    this.setState({zip:currentZip})
   },
   onEmailChange(e){
-    this.setState({email:e.target.value})
+    var currentEmail = e.target.value
+    this.setState({email:currentEmail})
   },
   onPhoneChange(e){
     this.setState({phone:e.target.value})
@@ -43,21 +51,17 @@ export default React.createClass({
     this.setState({type:itemType})
     this.refs.listItemsDisplay.insertAdjacentHTML("afterbegin",
       `<pre class="itemDisplayList">${this.refs.selectType.value},${this.refs.newItemName.value} </pre>`)
-    console.log(this.state);
-
     ajax({
       url: "https://tiny-tiny.herokuapp.com/collections/davidRangel-gearAppTesting",
       datatype: "json",
       type: "POST",
       data: {
-        User: this.state.name,
-        Zip: this.state.zip,
-        Email: this.state.email,
-        Phone: this.state.phone,
-        Items:{
-          item: this.state.item,
-          type: this.state.type
-        }
+        name: this.state.name,
+        zip: this.state.zip,
+        email: this.state.email,
+        phone: this.state.phone,
+        item: newItem,
+        type: itemType
       },
       success: this.onPostJsonLoaded,
       error: this.jsonNotLoaded
@@ -71,7 +75,8 @@ export default React.createClass({
           <input className="lendFormInputUserInfo"
             type="text"
             name="userName"
-            placeholder="User Name"
+            ref="userName"
+            placeholder="Name"
             onChange={this.onNameChange}/>
           <input className="lendFormInputUserInfo"
             type="text"

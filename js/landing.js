@@ -3,6 +3,11 @@ import { Link } from 'react-router'
 import { hashHistory } from 'react-router'
 
 export default React.createClass({
+  getDefaultProps() {
+    return {
+      user: { authed: false }
+    }
+  },
   linkToLend(){
     hashHistory.push("/lend")
   },
