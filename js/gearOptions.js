@@ -119,7 +119,7 @@ export default React.createClass({
             <h1 className="gearListPaneTitle">Misc.</h1>
             {
               this.state.postingsList.map((listing, i)=>{
-                if (listing.type === "Misc."){
+                if (listing.type === "Misc"){
                 return (
                   <div className="listPageItems">
                     <p className="listingPageData">{listing.item}</p>
