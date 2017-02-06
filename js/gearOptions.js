@@ -61,7 +61,10 @@ export default React.createClass({
         this.setState({currentEmail:listing.email})
         this.setState({currentZip:listing.zip})
         this.setState({currentPhone:listing.phone})
-        this.setState({currentDescription:listing.description})
+        if (listing.description === "" || null){
+          this.setState({currentDescription:"No description"})
+        }else {
+        this.setState({currentDescription:listing.description})}
       }
     })
     this.setState({isModalOpen: true})

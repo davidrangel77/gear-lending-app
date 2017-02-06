@@ -6,7 +6,7 @@ import { hashHistory} from 'react-router'
 export default React.createClass({
   getDefaultProps() {
     return {
-      user: { authed: false }
+      user: { authed: false, }
     }
   },
 
@@ -20,6 +20,17 @@ export default React.createClass({
       type: "",
       description: ""
     }
+  },
+  componentDidMount() {
+    var parent = this
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+      var currentUser = user.displayName
+      var currentEmail = user.email
+      parent.setState({name:currentUser})
+      parent.setState({email:currentEmail})
+      }
+    });
   },
   onNameChange(e){
     var currentName = e.target.value
@@ -80,9 +91,10 @@ export default React.createClass({
           <input className="lendFormInputUserInfo"
             type="text"
             name="userName"
-            ref="userName"
+            ref="currentUserName"
             placeholder="Name"
-            onChange={this.onNameChange}/>
+            onChange={this.onNameChange}
+            value={this.state.name}/>
           <input className="lendFormInputUserInfo"
             type="text"
             name="userLocation"
@@ -92,7 +104,8 @@ export default React.createClass({
             type="text"
             name="userEmail"
             placeholder="Email"
-            onChange={this.onEmailChange}/>
+            onChange={this.onEmailChange}
+            value={this.state.email}/>
           <input className="lendFormInputUserInfo"
             type="text"
             name="userPhone"
