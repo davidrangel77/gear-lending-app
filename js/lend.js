@@ -17,7 +17,8 @@ export default React.createClass({
       email: "",
       phone: 0,
       item: "",
-      type: ""
+      type: "",
+      description: ""
     }
   },
   onNameChange(e){
@@ -37,6 +38,9 @@ export default React.createClass({
   },
   onTypeChange(){
     this.setState({type:this.refs.selectType.value})
+  },
+  onDescriptionChange(e){
+    this.setState({description:e.target.value})
   },
   submitFormDone(){
     hashHistory.push("/gearOptions")
@@ -61,7 +65,8 @@ export default React.createClass({
         email: this.state.email,
         phone: this.state.phone,
         item: newItem,
-        type: itemType
+        type: itemType,
+        description: this.state.description
       },
       success: this.onPostJsonLoaded,
       error: this.jsonNotLoaded
@@ -109,6 +114,12 @@ export default React.createClass({
                 ref="newItemName"/>
             </div>
           </div>
+          <input className="longDescription"
+            type="text"
+            name="longDescription"
+            placeholder="Enter long description HERE"
+            ref=""
+            onChange={this.onDescriptionChange}/>
           <div className="itemListDisplay" ref="listItemsDisplay">
           </div>
           <div className="formButtons">

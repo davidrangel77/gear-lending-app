@@ -245,6 +245,20 @@ Link {
   text-align: center;
   width: 78%;
 }
+.longDescription {
+  background-color: white;
+  opacity: 1.0;
+  border: solid 2px grey;
+  border-radius: 4px;
+  display: block;
+  font-size: 1em;
+  height: 2em;
+  margin-bottom: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 80%;
+}
 .selectItemCategory{
   display: inline-block;
   border: solid 2px grey;
@@ -367,6 +381,8 @@ Link {
 
 /********MODAL********/
 .modalPosition {
+  border-radius: 15px;
+  box-shadow: 5px 5px 20px;
   display: inline-block;
   background-color: white;
   position: absolute;;
@@ -378,9 +394,47 @@ Link {
 }
 
 .modalBackground {
-  background-color: lightgrey;
-  width: 10em;
+  background-color: darkgrey;
+  width: 20em;
+  height: 100%;
   text-align: center;
+}
+.modalItemText {
+  display: inline-block;
+  margin: 0;
+  width: 100%;
+}
+.modalItemName {
+  font-size: 20px;
+  margin: 0px;
+  padding: 1em 1em;
+}
+.modalItemEmail {
+  display: inline-block;
+  font-size: 20px;
+  margin-bottom: 1em;
+}
+.modalItemZip {
+  margin: 0 auto 0.25em auto;
+  font-size: 1.25em;
+}
+.modalItemZipElement {
+  margin: 0 auto 1em auto;
+}
+.modalItemPhone {
+  color: white;
+  margin: 0 auto 1em auto;
+  font-size: 1.5em;
+}
+.modalItemDescription {
+  margin: 0 1.5em 1em 1.5em;
+}
+.closeModalButton {
+  border: none;
+  background-color: lightgrey;
+  color: red;
+  font-size: 1.5em;
+  width: 100%;
 }
 .visible {
   display: block;

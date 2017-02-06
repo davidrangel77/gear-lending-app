@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router'
 import { ajax } from 'jquery'
-import Modal from './modal'
 
 export default React.createClass({
   getInitialState(){
@@ -9,8 +8,11 @@ export default React.createClass({
       postingsList: [],
       contactName: '',
       currentID: 'NO',
-      currentName: '',
-      currentEmail: '',
+      currentName: 'First Name',
+      currentEmail: 'email@email.com',
+      currentZip: '78227',
+      currentPhone: '2105551234',
+      currentDescription: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       isModalOpen: false
     }
   },
@@ -57,6 +59,9 @@ export default React.createClass({
         this.setState({currentID:currentIDNumber})
         this.setState({currentName:listing.name})
         this.setState({currentEmail:listing.email})
+        this.setState({currentZip:listing.zip})
+        this.setState({currentPhone:listing.phone})
+        this.setState({currentDescription:listing.description})
       }
     })
     this.setState({isModalOpen: true})
@@ -74,7 +79,7 @@ export default React.createClass({
                 return (
                   <div className="listPageItems">
                     <p className="listingPageData">{listing.item}</p>
-                    <div className="listingPageDataContact" href="contactModal" onClick={this.findCurrentId}  value={listing._id}>Contact
+                    <div className="listingPageDataContact" onClick={this.findCurrentId}  value={listing._id}>More...
                     </div>
                   </div>
                 )}
@@ -89,7 +94,7 @@ export default React.createClass({
                 return (
                   <div className="listPageItems">
                     <p className="listingPageData">{listing.item}</p>
-                      <div className="listingPageDataContact" href="contactModal" onClick={this.findCurrentId}  value={listing._id}>Contact
+                      <div className="listingPageDataContact" onClick={this.findCurrentId}  value={listing._id}>More...
                       </div>
                   </div>
                 )}
@@ -104,7 +109,7 @@ export default React.createClass({
                 return (
                   <div className="listPageItems">
                     <p className="listingPageData">{listing.item}</p>
-                    <p className="listingPageDataContact" href="contactModal" onClick="">Contact</p>
+                    <p className="listingPageDataContact" onClick={this.findCurrentId} value={listing._id}>More...</p>
                   </div>
                 )}
               })
@@ -118,7 +123,7 @@ export default React.createClass({
                 return (
                   <div className="listPageItems">
                     <p className="listingPageData">{listing.item}</p>
-                    <a className="listingPageData" href="contactModal">{listing.email}</a>
+                    <p className="listingPageDataContact" onClick={this.findCurrentId} value={listing._id}>More...</p>
                   </div>
                 )}
               })
@@ -127,9 +132,17 @@ export default React.createClass({
           <div className="modalPosition">
             <div className={this.getModalOpenState() ? "visible" : "hidden"}>
               <div className="modalBackground">
-                <p>{this.state.currentName}</p>
-                <a href="mailto:{this.state.currentEmail}">{this.state.currentEmail}</a>
-                <p><button className="clickhere_button" onClick={() => this.makeModalCloseState()}>Close</button></p>
+                <p className="modalItemName">{this.state.currentName}</p>
+                <a className="modalItemEmail"
+                  href={"mailto:"+this.state.currentEmail}>{this.state.currentEmail}</a>
+                <p className="modalItemPhone">{this.state.currentPhone}</p>
+                <div className="modalItemZipElement"
+                    value={this.state.currentZip}>
+                  <p className="modalItemZip">{this.state.currentZip}</p>
+                  <p style={{margin:0}}>(click to view map)</p>
+                </div>
+                <p className="modalItemDescription">{"''"+this.state.currentDescription+"''"}</p>
+                <p className="modalItemText"><button className="closeModalButton hvr-underline-from-center" onClick={() => this.makeModalCloseState()}>X</button></p>
               </div>
             </div>
           </div>
