@@ -8,6 +8,10 @@ export default React.createClass({
     return {
       postingsList: [],
       contactName: '',
+      currentID: 'NO',
+      currentName: '',
+      currentEmail: '',
+      isModalOpen: false
     }
   },
   getDefaultProps() {
@@ -36,17 +40,28 @@ export default React.createClass({
       postingsList: response
     })
   },
-  findCurrentContactName(e) {
-    console.log(e.target.value);
-    var currentIDvalue = e.target.value
+  updatePostVisible (){
+    this.setState({isModalOpen: true})
+  },
+  makeModalCloseState (){
+    this.setState({isModalOpen: false})
+  },
+  getModalOpenState(){
+    return this.state.isModalOpen
+  },
+
+  findCurrentId(e) {
+    var currentIDNumber = e.target.getAttribute('value')
     this.state.postingsList.map((listing, i)=>{
-      if (listing._id === currentIDvalue){
-        var currentPostName = listing.name
-        this.setState({currentName:currentPostName})
+      if (listing._id === currentIDNumber){
+        this.setState({currentID:currentIDNumber})
+        this.setState({currentName:listing.name})
+        this.setState({currentEmail:listing.email})
       }
     })
-
+    this.setState({isModalOpen: true})
   },
+
   render() {
     return (
       <section className="gearOptionsPage">
@@ -59,7 +74,8 @@ export default React.createClass({
                 return (
                   <div className="listPageItems">
                     <p className="listingPageData">{listing.item}</p>
-                    <div className="listingPageDataContact" href="contactModal" onClick={this.findCurrentContactName}  value={listing._id}>Contact</div>
+                    <div className="listingPageDataContact" href="contactModal" onClick={this.findCurrentId}  value={listing._id}>Contact
+                    </div>
                   </div>
                 )}
               })
@@ -73,7 +89,8 @@ export default React.createClass({
                 return (
                   <div className="listPageItems">
                     <p className="listingPageData">{listing.item}</p>
-                    <a className="listingPageData" href="contactModal">{listing.email}</a>
+                      <div className="listingPageDataContact" href="contactModal" onClick={this.findCurrentId}  value={listing._id}>Contact
+                      </div>
                   </div>
                 )}
               })
@@ -106,6 +123,15 @@ export default React.createClass({
                 )}
               })
             }
+          </div>
+          <div className="modalPosition">
+            <div className={this.getModalOpenState() ? "visible" : "hidden"}>
+              <div className="modalBackground">
+                <p>{this.state.currentName}</p>
+                <a href="mailto:{this.state.currentEmail}">{this.state.currentEmail}</a>
+                <p><button className="clickhere_button" onClick={() => this.makeModalCloseState()}>Close</button></p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
