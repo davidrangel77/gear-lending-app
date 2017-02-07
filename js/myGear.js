@@ -69,7 +69,7 @@ export default React.createClass({
                   var currentEmail = this.state.email
                   if (listing.email === currentEmail){
                   return (
-                    <div className="listPageItems">
+                    <div key={i} className="listPageItems">
                       <p className="listingPageData">{listing.type}</p>
                       <p className="listingPageData">{listing.item}</p>
                       <div className="listingPageDataContact" onClick={this.deleteItem}  value={listing._id}>Delete
