@@ -368,6 +368,7 @@ Link {
 }
 .gearListPane {
   margin: 1em;
+  border: solid 2px #22313F;
   border-radius: 10px;
   background-color: lightgrey;
   display: inline-block;
@@ -380,12 +381,17 @@ Link {
 }
 
 /********MODAL********/
+.modalBackground {
+  background-color: black;
+  opacity: 0.5;
+  width: 100vw;
+  height: 100vh;
+}
 .modalPosition {
   border-radius: 15px;
   box-shadow: 5px 5px 20px;
   display: inline-block;
-  background-color: white;
-  position: absolute;;
+  position: absolute;
   overflow: scroll;
   top: 50%;
   left: 50%;
@@ -393,7 +399,7 @@ Link {
   max-height: 100%;
 }
 
-.modalBackground {
+.modal {
   background-color: darkgrey;
   width: 20em;
   height: 100%;

@@ -134,7 +134,7 @@ export default React.createClass({
           </div>
           <div className="modalPosition">
             <div className={this.getModalOpenState() ? "visible" : "hidden"}>
-              <div className="modalBackground">
+              <div className="modal">
                 <p className="modalItemName">{this.state.currentName}</p>
                 <a className="modalItemEmail"
                   href={"mailto:"+this.state.currentEmail}>{this.state.currentEmail}</a>
@@ -145,7 +145,7 @@ export default React.createClass({
                   <p style={{margin:0}}>(click to view map)</p>
                 </div>
                 <p className="modalItemDescription">{"''"+this.state.currentDescription+"''"}</p>
-                <p className="modalItemText"><button className="closeModalButton hvr-underline-from-center" onClick={() => this.makeModalCloseState()}>X</button></p>
+                <p className="modalItemText"><button className="closeModalButton" onClick={() => this.makeModalCloseState()}>X</button></p>
               </div>
             </div>
           </div>
