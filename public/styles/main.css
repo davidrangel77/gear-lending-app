@@ -469,6 +469,27 @@ Link {
   margin-top: 1.5em;
   overflow: scroll;
 }
+.myGearName {
+  text-align: center;
+}
+.myGearEmail {
+  text-align: center;
+}
+/*********MY GEAR UPDATE MODAL******/
+.updateForm {
+  background-color: darkgrey;
+  width: 30em;
+  height: 100%;
+  min-height: 10em;
+  text-align: center;
+}
+.updateFormButton {
+  border: none;
+  background-color: #22313F;
+  color: white;
+  font-size: 1.5em;
+  width: 100%;
+}
 
 @media only screen and (min-width: 500px ) {
   .landingButtonBorrow{

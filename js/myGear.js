@@ -13,7 +13,15 @@ export default React.createClass({
     return {
       postingsList: [],
       name: '',
-      email: ''
+      email: '',
+      currentID: 'NO',
+      currentType: '',
+      currentItem: '',
+      currentDescription: '',
+      newType: '',
+      newItem: '',
+      newDescription:'',
+      isModalOpen: false
     }
   },
   initialJsonLoaded (response){
@@ -46,23 +54,73 @@ export default React.createClass({
     datatype: "json",
     type: "DElETE",
     success: this.recordDeleted,
-    error: this.notDeleted
+    error: this.error
     })
   },
   recordDeleted() {
-    alert("record deleted")
+    alert("Record deleted!")
   },
-  notDeleted() {
+  recordUpdated() {
+    alert("Record updated!")
+  },
+  error() {
     alert("Error")
   },
-
+  updatePostVisible (){
+    this.setState({isModalOpen: true})
+  },
+  makeModalCloseState (){
+    this.setState({isModalOpen: false})
+  },
+  getModalOpenState(){
+    return this.state.isModalOpen
+  },
+  findCurrentId(e) {
+    var currentIDNumber = e.target.getAttribute('value')
+    this.state.postingsList.map((listing, i)=>{
+      if (listing._id === currentIDNumber){
+        this.setState({currentID:currentIDNumber})
+        this.setState({currentItem:listing.item})
+        this.setState({currentType:listing.type})
+        this.setState({currentDescription:listing.description})
+      }
+    })
+    this.setState({isModalOpen: true})
+  },
+  onNewType(e){
+    this.setState({newType:e.target.value})
+  },
+  onNewItem(e){
+    this.setState({newItem:e.target.value})
+  },
+  onNewDescription(e){
+    this.setState({newDescription:e.target.value})
+  },
+  submitChanges() {
+    var currentItemID = this.state.currentID
+    var newItem = this.state.newItem
+    var newType = this.state.newType
+    var newDescription = this.state.newDescription
+    ajax({
+    url: 'https://tiny-tiny.herokuapp.com/collections/davidRangel-gearAppTesting/'+currentItemID,
+    datatype: "json",
+    type: "PUT",
+    data: {
+      type: newType,
+      item: newItem,
+      description: newDescription
+    },
+    success: this.recordUpdated,
+    error: this.error
+    })
+  },
   render() {
     return (
       <section className="gearOptionsPage">
         <div className="myGearAll">
           <div className="myGear">
-            <h1>{this.state.name}</h1>
-            <h2>{this.state.email}</h2>
+            <h1 className="myGearName">{this.state.name}</h1>
+            <h2 className="myGearEmail">{this.state.email}</h2>
             <div>
               {
                 this.state.postingsList.map((listing, i)=>{
@@ -74,13 +132,31 @@ export default React.createClass({
                       <p className="listingPageData">{listing.item}</p>
                       <div className="listingPageDataContact" onClick={this.deleteItem}  value={listing._id}>Delete
                       </div>
+                      <div className="listingPageDataContact" onClick={this.findCurrentId}  value={listing._id}>Update
+                      </div>
                     </div>
                   )}
                 })
               }
             </div>
-
           </div>
+        </div>
+        <div className="modalPosition">
+          <div className={this.getModalOpenState() ? "visible" : "hidden"}>
+            <form className="updateForm">
+              <p>Current Type: {this.state.currentType}</p>
+              <label>Change Item Type</label>
+              <input type="text" onChange={this.onNewType}></input>
+              <p>Current Item Name:{this.state.currentItem}</p>
+              <label>Change Item Name</label>
+              <input type="text" onChange={this.onNewItem}></input>
+                <p>Current Description:{this.state.currentDescription}</p>
+                <label>Change Item Description</label>
+                <input type="text" onChange={this.newDescription}></input>
+                <p className="modalItemText"><button className="updateFormButton" onClick={this.submitChanges}>Submit</button></p>
+            </form>
+            <p className="modalItemText"><button className="updateFormButton" onClick={() => this.makeModalCloseState()}>Cancel</button></p>
+            </div>
         </div>
       </section>
     )
