@@ -93,6 +93,7 @@ Link {
   border-top: solid 4px black;
   background-color: #22313F;
   height: 5em;
+  z-index: -1;
 }
 /********LANDING PAGE ***********/
 .landingPage {
@@ -177,7 +178,7 @@ Link {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-/************LEND Page******/
+/************LEND PAGE*****/
 .lendPage{
   position: relative;
   background: url("/styles/landingImage.jpg");
@@ -468,12 +469,38 @@ Link {
   margin: 0 auto 0 auto;
   margin-top: 1.5em;
   overflow: scroll;
+  position: relative;
 }
 .myGearName {
   text-align: center;
 }
 .myGearEmail {
   text-align: center;
+}
+.myGearButtons {
+  border-top: solid 2px #22313F;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+.backToGearButton {
+  border-bottom: solid 2px #22313F;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  background-color: grey;
+  color: white;
+  font-size: 1.5em;
+  width: 100%;
+  -webkit-appearance: none;
+}
+.backToLendButton {
+  border: none;
+  background-color: grey;
+  color: white;
+  font-size: 1.5em;
+  width: 100%;
+  -webkit-appearance: none;
 }
 /*********MY GEAR UPDATE MODAL******/
 .updateForm {
@@ -484,7 +511,6 @@ Link {
   text-align: center;
 }
 .updateFormButton {
-  border: none;
   background-color: #22313F;
   color: white;
   font-size: 1.5em;

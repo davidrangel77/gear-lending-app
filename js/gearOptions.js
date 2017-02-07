@@ -21,14 +21,6 @@ export default React.createClass({
       user: { authed: false }
     }
   },
-  // componentWillMount() {
-  //   firebase.database().ref("/Postings").once("value").then((snapshot) => {
-  //    const itemPostings = snapshot.val()
-  //    this.setState({
-  //      postingsList: itemPostings
-  //    })
-  //  })
-  // },
   componentDidMount (){
     ajax({
       url: "https://tiny-tiny.herokuapp.com/collections/davidRangel-gearAppTesting",
@@ -50,24 +42,6 @@ export default React.createClass({
   },
   getModalOpenState(){
     return this.state.isModalOpen
-  },
-  deleteItem(e) {
-    var currentItemID = e.target.getAttribute('value')
-    console.log(currentItemID);
-
-    ajax({
-    url: 'https://tiny-tiny.herokuapp.com/collections/davidRangel-gearAppTesting/'+currentItemID,
-    datatype: "json",
-    type: "DElETE",
-    success: this.recordDeleted,
-    error: this.notDeleted
-    })
-  },
-  recordDeleted() {
-    alert("record deleted")
-  },
-  notDeleted() {
-    alert("Error")
   },
 
   findCurrentId(e) {

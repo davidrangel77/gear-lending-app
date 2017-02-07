@@ -48,7 +48,6 @@ export default React.createClass({
   },
   deleteItem(e) {
     var currentItemID = e.target.getAttribute('value')
-    console.log(currentItemID);
     ajax({
     url: 'https://tiny-tiny.herokuapp.com/collections/davidRangel-gearAppTesting/'+currentItemID,
     datatype: "json",
@@ -101,18 +100,34 @@ export default React.createClass({
     var newItem = this.state.newItem
     var newType = this.state.newType
     var newDescription = this.state.newDescription
+    var updatedData = {
+      type: newType,
+      item: newItem,
+      description: newDescription
+    };
+    if (newType === ""){
+      updatedData.type = this.state.currentType
+    }
+    if (newItem === ""){
+      updatedData.item = this.state.currentItem
+    }
+    if (newDescription === ""){
+      updatedData.description = this.state.currentDescription
+    }
     ajax({
     url: 'https://tiny-tiny.herokuapp.com/collections/davidRangel-gearAppTesting/'+currentItemID,
     datatype: "json",
     type: "PUT",
-    data: {
-      type: newType,
-      item: newItem,
-      description: newDescription
-    },
+    data: updatedData,
     success: this.recordUpdated,
     error: this.error
     })
+  },
+  backToGearPage() {
+    hashHistory.push("/gearOptions")
+  },
+  backToLendPage() {
+    hashHistory.push("/lend")
   },
   render() {
     return (
@@ -139,6 +154,10 @@ export default React.createClass({
                 })
               }
             </div>
+            <div className="myGearButtons">
+              <button className="backToGearButton" onClick={this.backToGearPage}>Back to Gear Options</button>
+              <button className="backToLendButton" onClick={this.backToLendPage}>Back to Lend</button>
+            </div>
           </div>
         </div>
         <div className="modalPosition">
@@ -152,10 +171,10 @@ export default React.createClass({
               <input type="text" onChange={this.onNewItem}></input>
                 <p>Current Description:{this.state.currentDescription}</p>
                 <label>Change Item Description</label>
-                <input type="text" onChange={this.newDescription}></input>
+                <input type="text" onChange={this.onNewDescription}></input>
                 <p className="modalItemText"><button className="updateFormButton" onClick={this.submitChanges}>Submit</button></p>
             </form>
-            <p className="modalItemText"><button className="updateFormButton" onClick={() => this.makeModalCloseState()}>Cancel</button></p>
+            <p className="modalItemText"><button className="updateFormButton" onClick={() => this.makeModalCloseState()}>Cancel/Done</button></p>
             </div>
         </div>
       </section>
