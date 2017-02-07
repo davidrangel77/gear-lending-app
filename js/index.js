@@ -5,6 +5,7 @@ import App from './app'
 import Landing from './landing'
 import GearOptions from './gearOptions'
 import Lend from './lend'
+import MyGear from './myGear'
 
 
 render(
@@ -14,6 +15,7 @@ render(
         <Route path="/" component={ Landing } />
         <Route path="/gearOptions" component={ GearOptions } />
         <Route path="/lend" component={ Lend } />
+        <Route path="/myGear" component={ MyGear }/>
       </Route>
     </Router>
   ),

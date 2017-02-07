@@ -59,7 +59,7 @@ Link {
   border-radius: 50%;
   position: absolute;
   top: 1.5rem;
-  right: 10.5rem;
+  right: 13.5rem;
   width: 2rem;
 }
 .nav__signIn, .nav__signOut {
@@ -71,7 +71,7 @@ Link {
     padding: 0.5rem 1rem;
     position: absolute;
     top: 1.5rem;
-    right: 5rem;
+    right: 8rem;
 }
 .nav__signIn:hover, .nav__signOut:hover {
     background-color: #22313F;
@@ -82,11 +82,11 @@ Link {
 .nav__signOut--hide {
   display: none;
 }
-.homeLink {
+.myGearLink {
   color: white;
   position: absolute;
   top: 2rem;
-  right: 1rem;
+  right: 2rem;
 }
 /********FOOTER ***********/
 .footerBackground {
@@ -448,6 +448,26 @@ Link {
 
 .hidden {
   display: none;
+}
+/**********MY GEAR PAGE********/
+.gearOptionsPage {
+  margin: 0;
+}
+.myGearAll {
+  width: 40em;
+  margin-left: auto;
+  margin-right: auto;
+}
+.myGear {
+  display: inline-block;
+  border: solid 2px #22313F;
+  border-radius: 10px;
+  background-color: lightgrey;
+  height: 30em;
+  width: 100%;
+  margin: 0 auto 0 auto;
+  margin-top: 1.5em;
+  overflow: scroll;
 }
 
 @media only screen and (min-width: 500px ) {

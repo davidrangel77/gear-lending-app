@@ -1,12 +1,16 @@
 import React from 'react'
-import { Link} from 'react-router'
+import { Link } from 'react-router'
+import { hashHistory } from 'react-router'
 
 export default React.createClass({
+  linkToHome(){
+    hashHistory.push("/")
+  },
 
   render() {
     return (
       <section className="headerBackground">
-        <div className="headerBranding">
+        <div className="headerBranding" onClick={this.linkToHome}>
           <h1 className="headerBrandingTitle">Gear Grow</h1>
           <p className="headerBrandingText">...a place to share</p>
         </div>
@@ -19,7 +23,7 @@ export default React.createClass({
               onClick={this.props.signUserOut}
               data-js="nav__signOut"> Log Out</button>
         </div>
-        <Link className="homeLink" to="/">HOME</Link>
+        <Link className="myGearLink" to="/myGear">MY GEAR</Link>
       </section>
     )
   }

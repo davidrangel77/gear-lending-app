@@ -51,6 +51,24 @@ export default React.createClass({
   getModalOpenState(){
     return this.state.isModalOpen
   },
+  deleteItem(e) {
+    var currentItemID = e.target.getAttribute('value')
+    console.log(currentItemID);
+    
+    ajax({
+    url: 'https://tiny-tiny.herokuapp.com/collections/davidRangel-gearAppTesting/'+currentItemID,
+    datatype: "json",
+    type: "DElETE",
+    success: this.recordDeleted,
+    error: this.notDeleted
+    })
+  },
+  recordDeleted() {
+    alert("record deleted")
+  },
+  notDeleted() {
+    alert("Error")
+  },
 
   findCurrentId(e) {
     var currentIDNumber = e.target.getAttribute('value')
@@ -83,6 +101,8 @@ export default React.createClass({
                   <div className="listPageItems">
                     <p className="listingPageData">{listing.item}</p>
                     <div className="listingPageDataContact" onClick={this.findCurrentId}  value={listing._id}>More...
+                    </div>
+                    <div className="listingPageDataContact" onClick={this.deleteItem}  value={listing._id}>Delete
                     </div>
                   </div>
                 )}

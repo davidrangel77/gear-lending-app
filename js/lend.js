@@ -9,7 +9,6 @@ export default React.createClass({
       user: { authed: false, }
     }
   },
-
   getInitialState() {
     return {
       name: "",
