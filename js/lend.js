@@ -54,7 +54,6 @@ export default React.createClass({
   },
   submitFormDone(){
     hashHistory.push("/gearOptions")
-
   },
   submitLendForm(e){
     e.preventDefault()
@@ -112,7 +111,7 @@ export default React.createClass({
             onChange={this.onPhoneChange}/>
           <div ref="lendForm">
             <div className="lendFormInputItem">
-              <select className="selectItemCategory" name="equipType" ref="selectType" onChange={this.onTypeChange}>
+              <select className="selectItemCategory" name="changeType" ref="selectType" onChange={this.onTypeChange}>
                 <option value="select">Select Type</option>
                 <option value="Lens">Lens</option>
                 <option value="Body">Body</option>

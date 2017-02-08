@@ -381,7 +381,7 @@ Link {
   text-align: center;
 }
 
-/********MODAL********/
+/******** GEAR OPTIONS MODAL********/
 .modalBackground {
   background-color: black;
   opacity: 0.5;
@@ -503,18 +503,113 @@ Link {
   -webkit-appearance: none;
 }
 /*********MY GEAR UPDATE MODAL******/
-.updateForm {
+/*.updateForm {
   background-color: darkgrey;
   width: 30em;
   height: 100%;
   min-height: 10em;
   text-align: center;
-}
+}*/
 .updateFormButton {
   background-color: #22313F;
   color: white;
   font-size: 1.5em;
   width: 100%;
+}
+.formButtons{
+  width: 20em;
+  margin-top: 1em;
+  margin-left: auto;
+  margin-right: auto;
+}
+.newItemType{
+  display: inline-block;
+  border: solid 2px grey;
+  border-left: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  display: inline-block;
+  font-size: 1em;
+  height: 2em;
+  margin-bottom: 1em;
+  margin-right: 0px;
+  margin-left: auto;
+  text-align: center;
+  width: 30%;
+  cursor: pointer;
+  -webkit-appearance: menulist;
+}
+.updateFormButton {
+  background-color: #22313F;
+  border: solid 2px grey;
+  border-radius: 4px;
+  color: lightgreen;
+  display: inline-block;
+  font-size: 1em;
+  height: 3em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 9.5em;
+  -webkit-appearance: none;
+}
+.updateFormDone {
+  background-color: #22313F;
+  border: solid 2px grey;
+  border-radius: 4px;
+  color: lightblue;
+  display: inline-block;
+  font-size: 1em;
+  height: 3em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 9.5em;
+  -webkit-appearance: none;
+}
+.updateForm {
+  display: inline-block;
+  background-color: #6C7A89;
+  border-radius: 20px;
+  box-shadow: 5px 5px 20px;
+  opacity: 0.90;
+  width: 30em;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 2em;
+  padding-top: 1.5em;
+  z-index: 1;
+  overflow: scroll;
+  max-height: 70vh;
+  text-align: center;
+}
+.updateInputs {
+  background-color: white;
+  opacity: 1.0;
+  border: solid 2px grey;
+  border-radius: 4px;
+  display: block;
+  font-size: 1em;
+  height: 2em;
+  margin-bottom: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 80%;
+}
+.updateLabel {
+  font-style: italic;
+  color: lightgreen;
+}
+.currentItemInfo {
+  margin: 0 1em 0.75em 1em;
+  font-size: 1.25em;
+  font-weight: bold;
+}
+.currentItemLabel {
+  font-style: italic;
+  margin: 0;
+  padding-top: 1em;
 }
 
 @media only screen and (min-width: 500px ) {

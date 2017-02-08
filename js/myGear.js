@@ -18,7 +18,7 @@ export default React.createClass({
       currentType: '',
       currentItem: '',
       currentDescription: '',
-      newType: '',
+      newType: 'No Change',
       newItem: '',
       newDescription:'',
       isModalOpen: false
@@ -57,10 +57,10 @@ export default React.createClass({
     })
   },
   recordDeleted() {
-    alert("Record deleted!")
+    window.location.reload()
   },
   recordUpdated() {
-    alert("Record updated!")
+    window.location.reload()
   },
   error() {
     alert("Error")
@@ -86,8 +86,8 @@ export default React.createClass({
     })
     this.setState({isModalOpen: true})
   },
-  onNewType(e){
-    this.setState({newType:e.target.value})
+  onNewType(){
+    this.setState({newType:this.refs.selectType.value})
   },
   onNewItem(e){
     this.setState({newItem:e.target.value})
@@ -95,7 +95,8 @@ export default React.createClass({
   onNewDescription(e){
     this.setState({newDescription:e.target.value})
   },
-  submitChanges() {
+  submitChanges(e) {
+    e.preventDefault()
     var currentItemID = this.state.currentID
     var newItem = this.state.newItem
     var newType = this.state.newType
@@ -105,7 +106,7 @@ export default React.createClass({
       item: newItem,
       description: newDescription
     };
-    if (newType === ""){
+    if (newType === "No Change"){
       updatedData.type = this.state.currentType
     }
     if (newItem === ""){
@@ -114,6 +115,7 @@ export default React.createClass({
     if (newDescription === ""){
       updatedData.description = this.state.currentDescription
     }
+    console.log(updatedData);
     ajax({
     url: 'https://tiny-tiny.herokuapp.com/collections/davidRangel-gearAppTesting/'+currentItemID,
     datatype: "json",
@@ -122,6 +124,7 @@ export default React.createClass({
     success: this.recordUpdated,
     error: this.error
     })
+    this.setState({isModalOpen: false})
   },
   backToGearPage() {
     hashHistory.push("/gearOptions")
@@ -133,48 +136,66 @@ export default React.createClass({
     return (
       <section className="gearOptionsPage">
         <div className="myGearAll">
-          <div className="myGear">
-            <h1 className="myGearName">{this.state.name}</h1>
-            <h2 className="myGearEmail">{this.state.email}</h2>
-            <div>
-              {
-                this.state.postingsList.map((listing, i)=>{
-                  var currentEmail = this.state.email
-                  if (listing.email === currentEmail){
-                  return (
-                    <div key={i} className="listPageItems">
-                      <p className="listingPageData">{listing.type}</p>
-                      <p className="listingPageData">{listing.item}</p>
-                      <div className="listingPageDataContact" onClick={this.deleteItem}  value={listing._id}>Delete
+          <div className={this.getModalOpenState() ? "hidden" : "visible"}>
+            <div className="myGear">
+              <h1 className="myGearName">{this.state.name}</h1>
+              <h2 className="myGearEmail">{this.state.email}</h2>
+              <div>
+                {
+                  this.state.postingsList.map((listing, i)=>{
+                    var currentEmail = this.state.email
+                    if (listing.email === currentEmail){
+                    return (
+                      <div key={i} className="listPageItems">
+                        <p className="listingPageData">{listing.type}</p>
+                        <p className="listingPageData">{listing.item}</p>
+                        <div className="listingPageDataContact" onClick={this.deleteItem}  value={listing._id}>Delete
+                        </div>
+                        <div className="listingPageDataContact" onClick={this.findCurrentId}  value={listing._id}>Update
+                        </div>
                       </div>
-                      <div className="listingPageDataContact" onClick={this.findCurrentId}  value={listing._id}>Update
-                      </div>
-                    </div>
-                  )}
-                })
-              }
-            </div>
-            <div className="myGearButtons">
-              <button className="backToGearButton" onClick={this.backToGearPage}>Back to Gear Options</button>
-              <button className="backToLendButton" onClick={this.backToLendPage}>Back to Lend</button>
+                    )}
+                  })
+                }
+              </div>
+              <div className="myGearButtons">
+                <button className="backToGearButton" onClick={this.backToGearPage}>Back to Gear Options</button>
+                <button className="backToLendButton" onClick={this.backToLendPage}>Back to Lend</button>
+              </div>
             </div>
           </div>
         </div>
         <div className="modalPosition">
           <div className={this.getModalOpenState() ? "visible" : "hidden"}>
             <form className="updateForm">
-              <p>Current Type: {this.state.currentType}</p>
-              <label>Change Item Type</label>
-              <input type="text" onChange={this.onNewType}></input>
-              <p>Current Item Name:{this.state.currentItem}</p>
-              <label>Change Item Name</label>
-              <input type="text" onChange={this.onNewItem}></input>
-                <p>Current Description:{this.state.currentDescription}</p>
-                <label>Change Item Description</label>
-                <input type="text" onChange={this.onNewDescription}></input>
-                <p className="modalItemText"><button className="updateFormButton" onClick={this.submitChanges}>Submit</button></p>
+              <p className="currentItemLabel">Current Item Type:</p>
+              <p className="currentItemInfo">{this.state.currentType}</p>
+              <label className="updateLabel">Change Item Type</label>
+                <br></br>
+              <select className="newItemType" name="equipType" ref="selectType" onChange={this.onNewType}>
+                <option value="No Change">No Change</option>
+                <option value="Lens">Lens</option>
+                <option value="Body">Body</option>
+                <option value="Lighting">Lighting</option>
+                <option value="Misc">Misc.</option>
+              </select>
+              <p className="currentItemLabel">Current Item Name:</p>
+              <p className="currentItemInfo">{this.state.currentItem}</p>
+              <label className="updateLabel">Change Item Name</label>
+                <br></br>
+              <input className="updateInputs" type="text" onChange={this.onNewItem}></input>
+                <p className="currentItemLabel">Current Description:</p>
+                <p className="currentItemInfo">{this.state.currentDescription}</p>
+                <label className="updateLabel">Change Item Description</label>
+                  <br></br>
+                <input className="updateInputs" type="text" onChange={this.onNewDescription}></input>
+                <div className="formButtons">
+                  <button className="updateFormButton" onClick={this.submitChanges}>Submit</button>
+                  <button className="updateFormDone"
+                    onClick={() => this.makeModalCloseState()}>Cancel/Done
+                  </button>
+                </div>
             </form>
-            <p className="modalItemText"><button className="updateFormButton" onClick={() => this.makeModalCloseState()}>Cancel/Done</button></p>
             </div>
         </div>
       </section>
