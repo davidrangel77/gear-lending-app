@@ -12,6 +12,7 @@ export default React.createClass({
       currentEmail: 'email@email.com',
       currentZip: '78227',
       currentPhone: '2105551234',
+      currentItem: 'Nikon D700',
       currentDescription: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       isModalOpen: false
     }
@@ -53,6 +54,7 @@ export default React.createClass({
         this.setState({currentEmail:listing.email})
         this.setState({currentZip:listing.zip})
         this.setState({currentPhone:listing.phone})
+        this.setState({currentItem:listing.item})
         if (listing.description === "" || null){
           this.setState({currentDescription:"No description"})
         }else {
@@ -73,9 +75,9 @@ export default React.createClass({
                 if (listing.type === "Lens"){
                 return (
                   <div className="listPageItems">
+                    <button className="listingPageDataContact" onClick={this.findCurrentId}  value={listing._id}>Details
+                    </button>
                     <p className="listingPageData">{listing.item}</p>
-                    <div className="listingPageDataContact" onClick={this.findCurrentId}  value={listing._id}>More...
-                    </div>
                   </div>
                 )}
               })
@@ -88,9 +90,9 @@ export default React.createClass({
                 if (listing.type === "Body"){
                 return (
                   <div className="listPageItems">
+                    <button className="listingPageDataContact" onClick={this.findCurrentId}  value={listing._id}>Details
+                    </button>
                     <p className="listingPageData">{listing.item}</p>
-                      <div className="listingPageDataContact" onClick={this.findCurrentId}  value={listing._id}>More...
-                      </div>
                   </div>
                 )}
               })
@@ -103,8 +105,10 @@ export default React.createClass({
                 if (listing.type === "Lighting"){
                 return (
                   <div className="listPageItems">
+                    <button className="listingPageDataContact"
+                      onClick={this.findCurrentId}
+                      value={listing._id}>Details</button>
                     <p className="listingPageData">{listing.item}</p>
-                    <p className="listingPageDataContact" onClick={this.findCurrentId} value={listing._id}>More...</p>
                   </div>
                 )}
               })
@@ -117,8 +121,9 @@ export default React.createClass({
                 if (listing.type === "Misc"){
                 return (
                   <div className="listPageItems">
+                    <button className="listingPageDataContact"
+                       onClick={this.findCurrentId} value={listing._id}>Details</button>
                     <p className="listingPageData">{listing.item}</p>
-                    <p className="listingPageDataContact" onClick={this.findCurrentId} value={listing._id}>More...</p>
                   </div>
                 )}
               })
@@ -129,15 +134,17 @@ export default React.createClass({
               <div className="modal">
                 <p className="modalItemName">{this.state.currentName}</p>
                 <a className="modalItemEmail"
-                  href={"mailto:"+this.state.currentEmail}>{this.state.currentEmail}</a>
+                  href={"mailto:"+this.state.currentEmail}>
+                  {this.state.currentEmail}</a>
                 <p className="modalItemPhone">{this.state.currentPhone}</p>
                 <div className="modalItemZipElement"
                     value={this.state.currentZip}>
                   <p className="modalItemZip">{this.state.currentZip}</p>
                   <p style={{margin:0}}>(click to view map)</p>
                 </div>
+                <p className="modalItemName">{this.state.currentItem}</p>
                 <p className="modalItemDescription">{"''"+this.state.currentDescription+"''"}</p>
-                <p className="modalItemText"><button className="closeModalButton" onClick={() => this.makeModalCloseState()}>X</button></p>
+                <p className="modalItemText"><button className="closeModalButton" onClick={() => this.makeModalCloseState()}>Close</button></p>
               </div>
             </div>
           </div>

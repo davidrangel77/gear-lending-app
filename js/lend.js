@@ -53,7 +53,7 @@ export default React.createClass({
     this.setState({description:e.target.value})
   },
   submitFormDone(){
-    hashHistory.push("/gearOptions")
+    hashHistory.push("/borrow")
   },
   submitLendForm(e){
     e.preventDefault()

@@ -115,7 +115,6 @@ export default React.createClass({
     if (newDescription === ""){
       updatedData.description = this.state.currentDescription
     }
-    console.log(updatedData);
     ajax({
     url: 'https://tiny-tiny.herokuapp.com/collections/davidRangel-gearAppTesting/'+currentItemID,
     datatype: "json",
@@ -127,7 +126,7 @@ export default React.createClass({
     this.setState({isModalOpen: false})
   },
   backToGearPage() {
-    hashHistory.push("/gearOptions")
+    hashHistory.push("/borrow")
   },
   backToLendPage() {
     hashHistory.push("/lend")
@@ -147,20 +146,20 @@ export default React.createClass({
                     if (listing.email === currentEmail){
                     return (
                       <div key={i} className="listPageItems">
-                        <p className="listingPageData">{listing.type}</p>
-                        <p className="listingPageData">{listing.item}</p>
-                        <div className="listingPageDataContact" onClick={this.deleteItem}  value={listing._id}>Delete
-                        </div>
-                        <div className="listingPageDataContact" onClick={this.findCurrentId}  value={listing._id}>Update
-                        </div>
+                        <button className="myGearUpdateButton" onClick={this.findCurrentId}  value={listing._id}>Update
+                        </button>
+                        <p className="myGearPageData">{listing.type}</p>
+                        <p className="myGearPageData">{listing.item}</p>
+                        <button className="myGearDeleteButton" onClick={this.deleteItem}  value={listing._id}>Remove
+                        </button>
                       </div>
                     )}
                   })
                 }
               </div>
               <div className="myGearButtons">
-                <button className="backToGearButton" onClick={this.backToGearPage}>Back to Gear Options</button>
-                <button className="backToLendButton" onClick={this.backToLendPage}>Back to Lend</button>
+                <button className="backToButton" onClick={this.backToGearPage}>To Borrow</button>
+                <button className="backToButton" onClick={this.backToLendPage}>To Lend</button>
               </div>
             </div>
           </div>
@@ -183,16 +182,16 @@ export default React.createClass({
               <p className="currentItemInfo">{this.state.currentItem}</p>
               <label className="updateLabel">Change Item Name</label>
                 <br></br>
-              <input className="updateInputs" type="text" onChange={this.onNewItem}></input>
+              <input className="updateInputName" type="text" onChange={this.onNewItem}></input>
                 <p className="currentItemLabel">Current Description:</p>
                 <p className="currentItemInfo">{this.state.currentDescription}</p>
                 <label className="updateLabel">Change Item Description</label>
                   <br></br>
-                <input className="updateInputs" type="text" onChange={this.onNewDescription}></input>
+                <input className="updateInputDescription" type="text" onChange={this.onNewDescription}></input>
                 <div className="formButtons">
                   <button className="updateFormButton" onClick={this.submitChanges}>Submit</button>
                   <button className="updateFormDone"
-                    onClick={() => this.makeModalCloseState()}>Cancel/Done
+                    onClick={() => this.makeModalCloseState()}><sp style={{color:"red"}}>Cancel</sp>/Done
                   </button>
                 </div>
             </form>

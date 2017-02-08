@@ -203,7 +203,7 @@ Link {
   transform: translate(-50%, -50%);
   z-index: 1;
   overflow: scroll;
-  max-height: 70vh;
+  max-height: 73vh;
 }
 .lendFormInputUserInfo {
   background-color: white;
@@ -284,7 +284,7 @@ Link {
   border: solid 2px grey;
   border-radius: 4px;
   width: 79%;
-  height: 7em;
+  height: 5em;
   margin-bottom: 1em;
   margin-left: auto;
   margin-right: auto;
@@ -345,21 +345,25 @@ Link {
   overflow: scroll;
 }
 .listingPageData {
+  font-size: 1em;
   display: inline-block;
   margin-left: 1em;
   margin-top: 0.5em;
   margin-bottom: 0.5em;
 }
 .listingPageDataContact {
-  background-color: white;
-  border: solid 1px grey;
-  border-radius: 8px;
-  color: green;
+  background-color: #22313F;
+  border: solid 2px grey;
+  border-radius: 4px;
+  color: lightgrey;
   display: inline-block;
+  font-size: 0.80em;
+  font-weight: lighter;
+  height: 1.75em;
   margin-left: 1em;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-  padding: .25em 1em;
+  margin-right: auto;
+  width: 6em;
+  -webkit-appearance: none;
 }
 .gearListPanesAll{
   position: relative;
@@ -368,26 +372,27 @@ Link {
   margin-right: auto;
 }
 .gearListPane {
-  margin: 1em;
-  border: solid 2px #22313F;
   border-radius: 10px;
-  background-color: lightgrey;
+  box-shadow: 5px 5px 20px;
+  background-color: #6C7A89;
   display: inline-block;
   height: 14em;
   width: 29.75em;
+  opacity: 0.9;
   overflow: scroll;
+  margin: 1em;
 }
 .gearListPaneTitle {
+  background-color: lightgrey;
+  border-bottom: solid 2px #22313F;
+  font-weight: lighter;
+  font-size: 1.5em;
   text-align: center;
+  margin-top: 0;
+  padding: 0.25em 0 0.25em 0;
 }
 
 /******** GEAR OPTIONS MODAL********/
-.modalBackground {
-  background-color: black;
-  opacity: 0.5;
-  width: 100vw;
-  height: 100vh;
-}
 .modalPosition {
   border-radius: 15px;
   box-shadow: 5px 5px 20px;
@@ -401,8 +406,8 @@ Link {
 }
 
 .modal {
-  background-color: darkgrey;
-  width: 20em;
+  background-color: lightgrey;
+  width: 25em;
   height: 100%;
   text-align: center;
 }
@@ -429,7 +434,7 @@ Link {
   margin: 0 auto 1em auto;
 }
 .modalItemPhone {
-  color: white;
+  color: green;
   margin: 0 auto 1em auto;
   font-size: 1.5em;
 }
@@ -439,8 +444,9 @@ Link {
 .closeModalButton {
   border: none;
   background-color: #22313F;
-  color: red;
-  font-size: 1.5em;
+  color: lightgrey;
+  font-size: 1em;
+  height: 2em;
   width: 100%;
 }
 .visible {
@@ -461,55 +467,88 @@ Link {
 }
 .myGear {
   display: inline-block;
-  border: solid 2px #22313F;
-  border-radius: 10px;
-  background-color: lightgrey;
+  background-color: #6C7A89;
+  border-radius: 20px;
+  box-shadow: 5px 5px 20px;
   height: 30em;
   width: 100%;
   margin: 0 auto 0 auto;
   margin-top: 1.5em;
   overflow: scroll;
+  opacity: 0.9;
   position: relative;
 }
 .myGearName {
+  background-color: lightgrey;
+  padding: 1em 0 0.5em 0;
   text-align: center;
+  margin: 0;
 }
 .myGearEmail {
-  text-align: center;
-}
-.myGearButtons {
-  border-top: solid 2px #22313F;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
-.backToGearButton {
+  background-color: lightgrey;
   border-bottom: solid 2px #22313F;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  background-color: grey;
-  color: white;
+  font-weight: lighter;
   font-size: 1.5em;
-  width: 100%;
+  text-align: center;
+  margin-top: 0;
+  padding-bottom: 10px;
+}
+.myGearPageData {
+  font-size: 1.25em;
+  display: inline-block;
+  margin-left: 1em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+.myGearDeleteButton {
+  background-color: #22313F;
+  border: solid 2px grey;
+  border-radius: 4px;
+  color: red;
+  display: inline-block;
+  font-size: 1em;
+  height: 2em;
+  margin-left: 1em;
+  margin-right: auto;
+  width: 6em;
   -webkit-appearance: none;
 }
-.backToLendButton {
-  border: none;
-  background-color: grey;
+.myGearUpdateButton {
+  background-color: #22313F;
+  border: solid 2px grey;
+  border-radius: 4px;
+  color: lightgreen;
+  display: inline-block;
+  font-size: 1em;
+  height: 2em;
+  margin-left: 1em;
+  margin-right: auto;
+  width: 6em;
+  -webkit-appearance: none;
+}
+.myGearButtons {
+  position: absolute;
+  bottom: 2em;
+  left: 27%;
+  margin-top: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20em;
+}
+.backToButton {
+  background-color: #22313F;
+  border: solid 2px grey;
+  border-radius: 4px;
   color: white;
-  font-size: 1.5em;
-  width: 100%;
+  display: inline-block;
+  font-size: 1em;
+  height: 3em;
+  margin-left: auto;
+  margin-right: auto;
+  width: 9.5em;
   -webkit-appearance: none;
 }
 /*********MY GEAR UPDATE MODAL******/
-/*.updateForm {
-  background-color: darkgrey;
-  width: 30em;
-  height: 100%;
-  min-height: 10em;
-  text-align: center;
-}*/
 .updateFormButton {
   background-color: #22313F;
   color: white;
@@ -526,10 +565,6 @@ Link {
   display: inline-block;
   border: solid 2px grey;
   border-left: 0;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
   display: inline-block;
   font-size: 1em;
   height: 2em;
@@ -573,17 +608,30 @@ Link {
   border-radius: 20px;
   box-shadow: 5px 5px 20px;
   opacity: 0.90;
-  width: 30em;
+  width: 35em;
   margin-left: auto;
   margin-right: auto;
   padding-bottom: 2em;
   padding-top: 1.5em;
-  z-index: 1;
+  z-index: 2;
   overflow: scroll;
-  max-height: 70vh;
   text-align: center;
 }
-.updateInputs {
+.updateInputName {
+  background-color: white;
+  opacity: 1.0;
+  border: solid 2px grey;
+  border-radius: 4px;
+  display: block;
+  font-size: 1em;
+  height: 2em;
+  margin-bottom: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 50%;
+}
+.updateInputDescription {
   background-color: white;
   opacity: 1.0;
   border: solid 2px grey;
