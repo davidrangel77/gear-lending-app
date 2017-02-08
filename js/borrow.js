@@ -14,7 +14,10 @@ export default React.createClass({
       currentPhone: '2105551234',
       currentItem: 'Nikon D700',
       currentDescription: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      isModalOpen: false
+      isModalOpen: false,
+      zipInfo: {},
+      currentLat: '',
+      currentLong: ''
     }
   },
   getDefaultProps() {
@@ -40,12 +43,28 @@ export default React.createClass({
   },
   makeModalCloseState (){
     this.setState({isModalOpen: false})
+    this.setState({currentLat:'', currentLong:''})
   },
   getModalOpenState(){
     return this.state.isModalOpen
   },
-
-  findCurrentId(e) {
+  getZipCode() {
+    var currentZip = this.state.currentZip
+    var urlToFindZip = "https://maps.googleapis.com/maps/api/geocode/json?address="+currentZip+"&key=AIzaSyDz0Z4OLAAZrhyHLh8JEkGhkntNYivudBM"
+    ajax({
+      url: urlToFindZip,
+      success: this.logZip,
+      error: this.error
+    })
+  },
+  logZip(response) {
+    this.setState({zipInfo:response})
+    var lat = this.state.zipInfo.results[0].geometry.location.lat
+    var lng = this.state.zipInfo.results[0].geometry.location.lng
+    this.setState({currentLat:lat})
+    this.setState({currentLong:lng})
+  },
+  openContactModal(e) {
     var currentIDNumber = e.target.getAttribute('value')
     this.state.postingsList.map((listing, i)=>{
       if (listing._id === currentIDNumber){
@@ -75,7 +94,7 @@ export default React.createClass({
                 if (listing.type === "Lens"){
                 return (
                   <div className="listPageItems">
-                    <button className="listingPageDataContact" onClick={this.findCurrentId}  value={listing._id}>Details
+                    <button className="listingPageDataContact" onClick={this.openContactModal} value={listing._id}>Details
                     </button>
                     <p className="listingPageData">{listing.item}</p>
                   </div>
@@ -90,7 +109,7 @@ export default React.createClass({
                 if (listing.type === "Body"){
                 return (
                   <div className="listPageItems">
-                    <button className="listingPageDataContact" onClick={this.findCurrentId}  value={listing._id}>Details
+                    <button className="listingPageDataContact" onClick={this.openContactModal}  value={listing._id}>Details
                     </button>
                     <p className="listingPageData">{listing.item}</p>
                   </div>
@@ -106,7 +125,7 @@ export default React.createClass({
                 return (
                   <div className="listPageItems">
                     <button className="listingPageDataContact"
-                      onClick={this.findCurrentId}
+                      onClick={this.openContactModal}
                       value={listing._id}>Details</button>
                     <p className="listingPageData">{listing.item}</p>
                   </div>
@@ -122,7 +141,7 @@ export default React.createClass({
                 return (
                   <div className="listPageItems">
                     <button className="listingPageDataContact"
-                       onClick={this.findCurrentId} value={listing._id}>Details</button>
+                       onClick={this.openContactModal} value={listing._id}>Details</button>
                     <p className="listingPageData">{listing.item}</p>
                   </div>
                 )}
@@ -137,13 +156,14 @@ export default React.createClass({
                   href={"mailto:"+this.state.currentEmail}>
                   {this.state.currentEmail}</a>
                 <p className="modalItemPhone">{this.state.currentPhone}</p>
+                <p className="modalItemName">{this.state.currentItem}</p>
+                <p className="modalItemDescription">{"''"+this.state.currentDescription+"''"}</p>
                 <div className="modalItemZipElement"
                     value={this.state.currentZip}>
                   <p className="modalItemZip">{this.state.currentZip}</p>
-                  <p style={{margin:0}}>(click to view map)</p>
+                  <button className="locationButton" onClick={this.getZipCode}>(click to show approx location)</button>
+                  <img src={"https://maps.googleapis.com/maps/api/staticmap?center=San+Antonio,TX&zoom=10&size=450x300&markers=color:red%7Clabel:%7C"+this.state.currentLat+","+this.state.currentLong+"&key=AIzaSyDz0Z4OLAAZrhyHLh8JEkGhkntNYivudBM"}></img>
                 </div>
-                <p className="modalItemName">{this.state.currentItem}</p>
-                <p className="modalItemDescription">{"''"+this.state.currentDescription+"''"}</p>
                 <p className="modalItemText"><button className="closeModalButton" onClick={() => this.makeModalCloseState()}>Close</button></p>
               </div>
             </div>

@@ -407,8 +407,8 @@ Link {
 
 .modal {
   background-color: lightgrey;
-  width: 25em;
   height: 100%;
+  width: 30em;
   text-align: center;
 }
 .modalItemText {
@@ -432,6 +432,20 @@ Link {
 }
 .modalItemZipElement {
   margin: 0 auto 1em auto;
+}
+.locationButton {
+  background-color: #22313F;
+  border: solid 2px grey;
+  border-radius: 4px;
+  color: lightgrey;
+  display: inline-block;
+  font-size: 0.80em;
+  font-weight: lighter;
+  height: 1.75em;
+  margin-left: 1em;
+  margin-right: auto;
+  width: 6em;
+  -webkit-appearance: none;
 }
 .modalItemPhone {
   color: green;
