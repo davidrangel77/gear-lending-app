@@ -24,18 +24,21 @@ export default React.createClass({
       isModalOpen: false
     }
   },
-  initialJsonLoaded (response){
-    this.setState({
-      postingsList: response
-    })
-  },
-  componentDidMount() {
+  ajaxCall() {
     ajax({
       url: "https://tiny-tiny.herokuapp.com/collections/davidRangel-gearAppTesting",
       datatype: "json",
       success: this.initialJsonLoaded,
       error: this.jsonNotLoaded
     })
+  },
+  initialJsonLoaded (response){
+    this.setState({
+      postingsList: response
+    })
+  },
+  componentDidMount() {
+    this.ajaxCall()
     var parent = this
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
@@ -57,10 +60,10 @@ export default React.createClass({
     })
   },
   recordDeleted() {
-    window.location.reload()
+    this.ajaxCall()
   },
   recordUpdated() {
-    window.location.reload()
+    this.ajaxCall()
   },
   error() {
     alert("Error")
@@ -74,7 +77,7 @@ export default React.createClass({
   getModalOpenState(){
     return this.state.isModalOpen
   },
-  findCurrentId(e) {
+  updateGear(e) {
     var currentIDNumber = e.target.getAttribute('value')
     this.state.postingsList.map((listing, i)=>{
       if (listing._id === currentIDNumber){
@@ -146,7 +149,7 @@ export default React.createClass({
                     if (listing.email === currentEmail){
                     return (
                       <div key={i} className="listPageItems">
-                        <button className="myGearUpdateButton" onClick={this.findCurrentId}  value={listing._id}>Update
+                        <button className="myGearUpdateButton" onClick={this.updateGear}  value={listing._id}>Update
                         </button>
                         <p className="myGearPageData">{listing.type}</p>
                         <p className="myGearPageData">{listing.item}</p>
