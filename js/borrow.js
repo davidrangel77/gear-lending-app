@@ -16,8 +16,8 @@ export default React.createClass({
       currentDescription: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
       isModalOpen: false,
       zipInfo: {},
-      currentLat: '',
-      currentLong: ''
+      currentLat: '40.702147',
+      currentLong: '-74.015794'
     }
   },
   getDefaultProps() {
@@ -43,7 +43,7 @@ export default React.createClass({
   },
   makeModalCloseState (){
     this.setState({isModalOpen: false})
-    this.setState({currentLat:'', currentLong:''})
+    this.setState({currentLat:'40.702147', currentLong:'-74.015794'})
   },
   getModalOpenState(){
     return this.state.isModalOpen
@@ -160,9 +160,8 @@ export default React.createClass({
                 <p className="modalItemDescription">{"''"+this.state.currentDescription+"''"}</p>
                 <div className="modalItemZipElement"
                     value={this.state.currentZip}>
-                  <p className="modalItemZip">{this.state.currentZip}</p>
-                  <button className="locationButton" onClick={this.getZipCode}>(click to show approx location)</button>
-                  <img src={"https://maps.googleapis.com/maps/api/staticmap?center=San+Antonio,TX&zoom=10&size=450x300&markers=color:red%7Clabel:%7C"+this.state.currentLat+","+this.state.currentLong+"&key=AIzaSyDz0Z4OLAAZrhyHLh8JEkGhkntNYivudBM"}></img>
+                  <button className="locationButton" onClick={this.getZipCode}>Click to show approx location</button>
+                  <img src={"https://maps.googleapis.com/maps/api/staticmap?center=San+Antonio,TX&zoom=10&size=550x450&markers=color:red%7Clabel:%7C"+this.state.currentLat+","+this.state.currentLong+"&key=AIzaSyDz0Z4OLAAZrhyHLh8JEkGhkntNYivudBM"}></img>
                 </div>
                 <p className="modalItemText"><button className="closeModalButton" onClick={() => this.makeModalCloseState()}>Close</button></p>
               </div>

@@ -164,7 +164,7 @@ export default React.createClass({
             </div>
           </div>
         </div>
-        <div className="modalPosition">
+        <div className="updateModalPosition">
           <div className={this.getModalOpenState() ? "visible" : "hidden"}>
             <form className="updateForm">
               <p className="currentItemLabel">Current Item Type:</p>
@@ -191,7 +191,7 @@ export default React.createClass({
                 <div className="formButtons">
                   <button className="updateFormButton" onClick={this.submitChanges}>Submit</button>
                   <button className="updateFormDone"
-                    onClick={() => this.makeModalCloseState()}><sp style={{color:"red"}}>Cancel</sp>/Done
+                    onClick={this.makeModalCloseState}><sp style={{color:"red"}}>Cancel</sp>/Done
                   </button>
                 </div>
             </form>

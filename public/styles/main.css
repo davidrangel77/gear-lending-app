@@ -395,6 +395,7 @@ Link {
 /******** GEAR OPTIONS MODAL********/
 .modalPosition {
   border-radius: 15px;
+  border: solid 2px #22313F;
   box-shadow: 5px 5px 20px;
   display: inline-block;
   position: absolute;
@@ -404,11 +405,10 @@ Link {
   transform: translate(-50%, -50%);
   max-height: 100%;
 }
-
 .modal {
   background-color: lightgrey;
   height: 100%;
-  width: 30em;
+  width: 35em;
   text-align: center;
 }
 .modalItemText {
@@ -442,9 +442,7 @@ Link {
   font-size: 0.80em;
   font-weight: lighter;
   height: 1.75em;
-  margin-left: 1em;
-  margin-right: auto;
-  width: 6em;
+  margin-bottom: 1em;
   -webkit-appearance: none;
 }
 .modalItemPhone {
@@ -563,6 +561,17 @@ Link {
   -webkit-appearance: none;
 }
 /*********MY GEAR UPDATE MODAL******/
+.updateModalPosition {
+  border-radius: 15px;
+  box-shadow: 5px 5px 20px;
+  display: inline-block;
+  position: absolute;
+  overflow: scroll;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-height: 100%;
+}
 .updateFormButton {
   background-color: #22313F;
   color: white;
