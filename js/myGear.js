@@ -24,21 +24,13 @@ export default React.createClass({
       isModalOpen: false
     }
   },
-  ajaxCall() {
+  componentDidMount() {
     ajax({
       url: "https://tiny-tiny.herokuapp.com/collections/davidRangel-gearAppTesting",
       datatype: "json",
       success: this.initialJsonLoaded,
       error: this.jsonNotLoaded
     })
-  },
-  initialJsonLoaded (response){
-    this.setState({
-      postingsList: response
-    })
-  },
-  componentDidMount() {
-    this.ajaxCall()
     var parent = this
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
@@ -49,21 +41,28 @@ export default React.createClass({
       }
     });
   },
+  initialJsonLoaded (response){
+    this.setState({
+      postingsList: response
+    })
+  },
   deleteItem(e) {
     var currentItemID = e.target.getAttribute('value')
     ajax({
     url: 'https://tiny-tiny.herokuapp.com/collections/davidRangel-gearAppTesting/'+currentItemID,
     datatype: "json",
     type: "DElETE",
-    success: this.recordDeleted,
+    success: this.recordUpdated,
     error: this.error
     })
   },
-  recordDeleted() {
-    this.ajaxCall()
-  },
   recordUpdated() {
-    this.ajaxCall()
+    ajax({
+      url: "https://tiny-tiny.herokuapp.com/collections/davidRangel-gearAppTesting",
+      datatype: "json",
+      success: this.initialJsonLoaded,
+      error: this.jsonNotLoaded
+    })
   },
   error() {
     alert("Error")
