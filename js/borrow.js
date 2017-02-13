@@ -61,10 +61,12 @@ export default React.createClass({
   searchModal(){
     this.setState({isSearchModalOpen:true})
     this.refs.gearListPanesAll.className="hidden"
+    this.refs.searchForm.className="hidden"
   },
   closeSearchModal(){
     this.setState({isSearchModalOpen:false})
     this.refs.gearListPanesAll.className="gearListPanesAll"
+    this.refs.searchForm.className="gearOptionsSearch"
   },
   //  SEARCH MODAL END **********
   getZipCode() {
@@ -107,11 +109,14 @@ export default React.createClass({
   render() {
     return (
       <section className="gearOptionsPage">
-        <form className="gearOptionsSearch">
+        <form className="gearOptionsSearch"
+            onSubmit={this.searchModal}
+            ref="searchForm">
           <input className="gearOptionsSearchInput"
+            placeholder="Search by item name or keyword"
             onChange={this.onSearchInfoChange}
             type="text"/>
-          <input className="listingPageDataContact" type="submit" value="SEARCH" onClick={this.searchModal}/>
+
         </form>
         <div className="gearListPanesAll" ref="gearListPanesAll">
           <div className="gearListPane">
@@ -179,6 +184,7 @@ export default React.createClass({
         <div className="modalPosition">
           <div className={this.getSearchModalOpenState() ? "visible" : "hidden"}>
             <div className="gearSearchModal">
+              <h1 className="gearListPaneTitle">Results</h1>
               <div className="gearResults">
                 {
                   this.state.postingsList.map((listing, i)=>{
