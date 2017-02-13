@@ -14,10 +14,12 @@ export default React.createClass({
       currentPhone: '2105551234',
       currentItem: 'Nikon D700',
       currentDescription: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      isSearchModalOpen: false,
       isModalOpen: false,
       zipInfo: {},
       currentLat: '40.702147',
-      currentLong: '-74.015794'
+      currentLong: '-74.015794',
+      searchInfo: ""
     }
   },
   getDefaultProps() {
@@ -44,10 +46,27 @@ export default React.createClass({
   makeModalCloseState (){
     this.setState({isModalOpen: false})
     this.setState({currentLat:'40.702147', currentLong:'-74.015794'})
+    this.refs.mapImage.className="hidden"
   },
   getModalOpenState(){
     return this.state.isModalOpen
   },
+  // SEARCH MODAL START ************
+  onSearchInfoChange(e){
+    this.setState({searchInfo:e.target.value})
+  },
+  getSearchModalOpenState(){
+    return this.state.isSearchModalOpen
+  },
+  searchModal(){
+    this.setState({isSearchModalOpen:true})
+    this.refs.gearListPanesAll.className="hidden"
+  },
+  closeSearchModal(){
+    this.setState({isSearchModalOpen:false})
+    this.refs.gearListPanesAll.className="gearListPanesAll"
+  },
+  //  SEARCH MODAL END **********
   getZipCode() {
     var currentZip = this.state.currentZip
     var urlToFindZip = "https://maps.googleapis.com/maps/api/geocode/json?address="+currentZip+"&key=AIzaSyDz0Z4OLAAZrhyHLh8JEkGhkntNYivudBM"
@@ -56,6 +75,7 @@ export default React.createClass({
       success: this.logZip,
       error: this.error
     })
+    this.refs.mapImage.className="visible modalMap"
   },
   // look into using the results from response instead of setiing state object
   logZip(response) {
@@ -87,7 +107,13 @@ export default React.createClass({
   render() {
     return (
       <section className="gearOptionsPage">
-        <div className="gearListPanesAll">
+        <form className="gearOptionsSearch">
+          <input className="gearOptionsSearchInput"
+            onChange={this.onSearchInfoChange}
+            type="text"/>
+          <input className="listingPageDataContact" type="submit" value="SEARCH" onClick={this.searchModal}/>
+        </form>
+        <div className="gearListPanesAll" ref="gearListPanesAll">
           <div className="gearListPane">
             <h1 className="gearListPaneTitle">Lenses</h1>
             {
@@ -149,23 +175,46 @@ export default React.createClass({
               })
             }
           </div>
-          <div className="modalPosition">
-            <div className={this.getModalOpenState() ? "visible" : "hidden"}>
-              <div className="modal">
+        </div>
+        <div className="modalPosition">
+          <div className={this.getSearchModalOpenState() ? "visible" : "hidden"}>
+            <div className="gearSearchModal">
+              <div className="gearResults">
+                {
+                  this.state.postingsList.map((listing, i)=>{
+                    if (listing.item.toLowerCase().indexOf(this.state.searchInfo.toLowerCase()) > -1){
+                    return (
+                      <div className="listPageItems">
+                        <button className="listingPageDataContact" onClick={this.openContactModal}  value={listing._id}>Details
+                        </button>
+                        <p className="listingPageData">{listing.item}</p>
+                      </div>
+                    )}
+                  })
+                }
+              </div>
+              <p className="modalItemText"><button className="closeSearchButton" onClick={() => this.closeSearchModal()}>Close</button></p>
+            </div>
+          </div>
+        </div>
+        <div className="modalPosition">
+          <div className={this.getModalOpenState() ? "visible" : "hidden"}>
+            <div className="modal">
+              <div className="modalUserInfo">
                 <p className="modalItemName">{this.state.currentName}</p>
                 <a className="modalItemEmail"
                   href={"mailto:"+this.state.currentEmail}>
                   {this.state.currentEmail}</a>
                 <p className="modalItemPhone">{this.state.currentPhone}</p>
-                <p className="modalItemName">{this.state.currentItem}</p>
-                <p className="modalItemDescription">{"''"+this.state.currentDescription+"''"}</p>
-                <div className="modalItemZipElement"
-                    value={this.state.currentZip}>
-                  <button className="locationButton" onClick={this.getZipCode}>Click to show approx location</button>
-                  <img src={"https://maps.googleapis.com/maps/api/staticmap?center=San+Antonio,TX&zoom=10&size=550x450&markers=color:red%7Clabel:%7C"+this.state.currentLat+","+this.state.currentLong+"&key=AIzaSyDz0Z4OLAAZrhyHLh8JEkGhkntNYivudBM"}></img>
-                </div>
-                <p className="modalItemText"><button className="closeModalButton" onClick={() => this.makeModalCloseState()}>Close</button></p>
               </div>
+              <p className="modalItemName">{this.state.currentItem}</p>
+              <p className="modalItemDescription">{"''"+this.state.currentDescription+"''"}</p>
+              <div className="modalItemZipElement"
+                  value={this.state.currentZip}>
+                <button className="locationButton" ref="locationButton" onClick={this.getZipCode}>Click to show approx location</button>
+                <img className="hidden" ref="mapImage" src={"https://maps.googleapis.com/maps/api/staticmap?center=San+Antonio,TX&zoom=10&size=560x460&markers=color:red%7Clabel:%7C"+this.state.currentLat+","+this.state.currentLong+"&key=AIzaSyDz0Z4OLAAZrhyHLh8JEkGhkntNYivudBM"}></img>
+              </div>
+              <p className="modalItemText"><button className="closeModalButton" onClick={() => this.makeModalCloseState()}>Close</button></p>
             </div>
           </div>
         </div>

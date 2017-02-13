@@ -386,11 +386,43 @@ Link {
   margin-top: 0;
   padding: 0.25em 0 0.25em 0;
 }
-
+.gearOptionsSearch {
+  width: 30em;
+  padding-top: 1em;
+  margin-left: auto;
+  margin-right: auto;
+}
+.gearOptionsSearchInput {
+  height: 2.5em;
+  width: 35em;
+}
+/*********GEAR SEARCH MODAL*******/
+.gearResults {
+  min-height: 25em;
+  margin-bottom: 1.5em;
+}
+.gearSearchModal{
+  border-radius: 10px;
+  box-shadow: 5px 5px 20px;
+  background-color: #6C7A89;
+  display: inline-block;
+  min-height: 25em;
+  width: 29.75em;
+  opacity: 0.9;
+  overflow: scroll;
+}
+.closeSearchButton {
+  border: none;
+  background-color: #22313F;
+  color: lightgrey;
+  font-size: 1em;
+  height: 2.5em;
+  width: 100%;
+  bottom: 0;
+}
 /******** GEAR OPTIONS MODAL********/
 .modalPosition {
   border-radius: 15px;
-  border: solid 2px #22313F;
   box-shadow: 5px 5px 20px;
   display: inline-block;
   position: absolute;
@@ -405,25 +437,31 @@ Link {
   height: 100%;
   width: 35em;
   text-align: center;
+  z-index: 1;
 }
 .modalItemText {
   display: inline-block;
   margin: 0;
   width: 100%;
 }
+.modalUserInfo {
+  background: white;
+  border-bottom: solid 2px #22313F;
+}
 .modalItemName {
   font-size: 20px;
   margin: 0px;
-  padding: 1em 1em;
+  padding: 1em 1em 0.5em 1em;
 }
 .modalItemEmail {
   display: inline-block;
   font-size: 20px;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
 }
-.modalItemZip {
-  margin: 0 auto 0.25em auto;
-  font-size: 1.25em;
+.modalItemPhone {
+  color: green;
+  margin: 0 auto 0.5em auto;
+  font-size: 1.5em;
 }
 .modalItemZipElement {
   margin: 0 auto 1em auto;
@@ -437,13 +475,12 @@ Link {
   font-size: 0.80em;
   font-weight: lighter;
   height: 1.75em;
-  margin-bottom: 1em;
+  margin-top: 1em;
   -webkit-appearance: none;
 }
-.modalItemPhone {
-  color: green;
-  margin: 0 auto 1em auto;
-  font-size: 1.5em;
+.modalMap {
+  margin-top: 1em;
+  margin-bottom: -1em;
 }
 .modalItemDescription {
   margin: 0 1.5em 1em 1.5em;
@@ -453,7 +490,7 @@ Link {
   background-color: #22313F;
   color: lightgrey;
   font-size: 1em;
-  height: 2em;
+  height: 2.5em;
   width: 100%;
 }
 .visible {
@@ -468,9 +505,9 @@ Link {
   margin: 0;
 }
 .myGearAll {
-  width: 45em;
   margin-left: auto;
   margin-right: auto;
+  width: 60%;
 }
 .myGear {
   display: inline-block;
@@ -540,7 +577,7 @@ Link {
   margin-bottom: 1em;
   margin-left: auto;
   margin-right: auto;
-  width: 20em;
+  width: 19em;
 }
 .backToButton {
   background-color: #22313F;
