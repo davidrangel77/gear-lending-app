@@ -198,7 +198,7 @@ Link {
   transform: translate(-50%, -50%);
   z-index: 1;
   overflow: scroll;
-  /*max-height: 73vh;*/
+  max-height: 73vh;
 }
 .lendFormInputUserInfo {
   background-color: white;
@@ -679,7 +679,6 @@ Link {
 }
 @media only screen and (min-width: 500px) {
     body {
-      color: lightblue;
     }
     .landingPage {
       background: url("/styles/landingImage.jpg");
@@ -780,7 +779,7 @@ Link {
     .lendPage{
       background: url("/styles/landingImage.jpg");
       background-size: cover;
-      min-height: 76.5vh;
+      max-height: 76.5vh;
     }
     .lendForm {
       display: inline-block;
