@@ -65,7 +65,7 @@ export default React.createClass({
     this.refs.listItemsDisplay.insertAdjacentHTML("afterbegin",
       `<pre class="itemDisplayList">${this.refs.selectType.value},${this.refs.newItemName.value} </pre>`)
     ajax({
-      url: "https://tiny-tiny.herokuapp.com/collections/davidRangel-gearAppTesting",
+      url: "https://tiny-tiny.herokuapp.com/collections/davidRangel-gearAppTesting1",
       datatype: "json",
       type: "POST",
       data: {

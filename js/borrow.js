@@ -27,7 +27,7 @@ export default React.createClass({
   },
   componentDidMount (){
     ajax({
-      url: "https://tiny-tiny.herokuapp.com/collections/davidRangel-gearAppTesting",
+      url: "https://tiny-tiny.herokuapp.com/collections/davidRangel-gearAppTesting1",
       datatype: "json",
       success: this.initialJsonLoaded,
       error: this.jsonNotLoaded

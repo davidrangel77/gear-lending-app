@@ -26,7 +26,7 @@ export default React.createClass({
   },
   componentDidMount() {
     ajax({
-      url: "https://tiny-tiny.herokuapp.com/collections/davidRangel-gearAppTesting",
+      url: "https://tiny-tiny.herokuapp.com/collections/davidRangel-gearAppTesting1",
       datatype: "json",
       success: this.initialJsonLoaded,
       error: this.jsonNotLoaded
@@ -49,7 +49,7 @@ export default React.createClass({
   deleteItem(e) {
     var currentItemID = e.target.getAttribute('value')
     ajax({
-    url: 'https://tiny-tiny.herokuapp.com/collections/davidRangel-gearAppTesting/'+currentItemID,
+    url: 'https://tiny-tiny.herokuapp.com/collections/davidRangel-gearAppTesting1/'+currentItemID,
     datatype: "json",
     type: "DElETE",
     success: this.recordUpdated,
@@ -58,7 +58,7 @@ export default React.createClass({
   },
   recordUpdated() {
     ajax({
-      url: "https://tiny-tiny.herokuapp.com/collections/davidRangel-gearAppTesting",
+      url: "https://tiny-tiny.herokuapp.com/collections/davidRangel-gearAppTesting1",
       datatype: "json",
       success: this.initialJsonLoaded,
       error: this.jsonNotLoaded
@@ -118,7 +118,7 @@ export default React.createClass({
       updatedData.description = this.state.currentDescription
     }
     ajax({
-    url: 'https://tiny-tiny.herokuapp.com/collections/davidRangel-gearAppTesting/'+currentItemID,
+    url: 'https://tiny-tiny.herokuapp.com/collections/davidRangel-gearAppTesting1/'+currentItemID,
     datatype: "json",
     type: "PUT",
     data: updatedData,

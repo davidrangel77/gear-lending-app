@@ -468,7 +468,7 @@ Link {
   margin: 0;
 }
 .myGearAll {
-  width: 40em;
+  width: 45em;
   margin-left: auto;
   margin-right: auto;
 }
@@ -534,10 +534,10 @@ Link {
   -webkit-appearance: none;
 }
 .myGearButtons {
-  position: absolute;
   bottom: 2em;
-  left: 27%;
+  left: 37%;
   margin-top: 1em;
+  margin-bottom: 1em;
   margin-left: auto;
   margin-right: auto;
   width: 20em;
