@@ -17,7 +17,6 @@ export default React.createClass({
   },
   componentDidMount() {
    this.setState({provider: new firebase.auth.GoogleAuthProvider()});
-
    firebase.auth().onAuthStateChanged((authUser) => {
      if (authUser) { // Signed in successfully
        var signOutButton = document.querySelector("[data-js='nav__signOut']")
@@ -72,12 +71,10 @@ export default React.createClass({
      var email = error.email;
      var credential = error.credential;
      console.log("ERROR authenticating with firebase: " + errorMessage);
-     //FIXME: Better logging/error handling
    });
   },
   signUserOut() {
    firebase.auth().signOut().then(() => {
-     //FIXME: Don't repeat myself from getInitialState()
      this.setState({
        user: {
          authed: false,
@@ -92,7 +89,7 @@ export default React.createClass({
 
   render() {
     return (
-      <section id="wrap">
+      <section id="wrap" className="app">
         <div id="main">
           <Header user={this.state.user}
                   signUserIn={this.signUserIn}

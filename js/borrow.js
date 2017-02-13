@@ -57,6 +57,7 @@ export default React.createClass({
       error: this.error
     })
   },
+  // look into using the results from response instead of setiing state object
   logZip(response) {
     this.setState({zipInfo:response})
     var lat = this.state.zipInfo.results[0].geometry.location.lat
