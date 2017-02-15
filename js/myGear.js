@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 import { ajax } from 'jquery'
 import { hashHistory } from 'react-router'
+import { fbAuthStateChanged } from './firebaseAuth'
 
 export default React.createClass({
   getDefaultProps() {
@@ -32,7 +33,7 @@ export default React.createClass({
       error: this.jsonNotLoaded
     })
     var parent = this
-    firebase.auth().onAuthStateChanged(function(user) {
+    fbAuthStateChanged(function(user) {
       if (user) {
       var currentUser = user.displayName
       var currentEmail = user.email
@@ -197,7 +198,7 @@ export default React.createClass({
                   </button>
                 </div>
             </form>
-            </div>
+          </div>
         </div>
       </section>
     )

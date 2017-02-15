@@ -10,9 +10,7 @@ describe("borrow", () => {
   })
   it("Should have a section", () => {
     const section = TestUtils.findRenderedDOMComponentWithClass(
-      sectionComponent,
-      "gearOptionsPage"
-    )
+      sectionComponent, "gearOptionsPage")
     expect(section).toBeDefined()
   })
 })

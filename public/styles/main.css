@@ -96,6 +96,12 @@ Link {
   height: 5em;
   z-index: -1;
 }
+.copyright {
+  color: white;
+  float: right;
+  font-weight: lighter;
+  margin: 2em 2em 1.5em 2em;
+}
 /********LANDING PAGE ***********/
 .landingPage {
   background: lightgrey;

@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 import { ajax } from 'jquery'
 import { hashHistory} from 'react-router'
+import { fbAuthStateChanged } from './firebaseAuth'
 
 export default React.createClass({
   getDefaultProps() {
@@ -22,7 +23,7 @@ export default React.createClass({
   },
   componentDidMount() {
     var parent = this
-    firebase.auth().onAuthStateChanged(function(user) {
+    fbAuthStateChanged(function(user) {
       if (user) {
       var currentUser = user.displayName
       var currentEmail = user.email
@@ -100,6 +101,7 @@ export default React.createClass({
             onChange={this.onZipChange}/>
           <input className="lendFormInputUserInfo"
             type="text"
+            ref="userEmailInput"
             name="userEmail"
             placeholder="Email"
             onChange={this.onEmailChange}

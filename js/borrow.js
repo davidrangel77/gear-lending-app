@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 import { ajax } from 'jquery'
+import { hashHistory } from 'react-router'
 
 export default React.createClass({
   getInitialState(){
@@ -19,7 +20,8 @@ export default React.createClass({
       zipInfo: {},
       currentLat: '40.702147',
       currentLong: '-74.015794',
-      searchInfo: ""
+      searchInfo: "",
+      loggedIn: false
     }
   },
   getDefaultProps() {
@@ -51,7 +53,6 @@ export default React.createClass({
   getModalOpenState(){
     return this.state.isModalOpen
   },
-  // SEARCH MODAL START ************
   onSearchInfoChange(e){
     this.setState({searchInfo:e.target.value})
   },
@@ -62,13 +63,13 @@ export default React.createClass({
     this.setState({isSearchModalOpen:true})
     this.refs.gearListPanesAll.className="hidden"
     this.refs.searchForm.className="hidden"
+    this.refs.searchForm.reset()
   },
   closeSearchModal(){
     this.setState({isSearchModalOpen:false})
     this.refs.gearListPanesAll.className="gearListPanesAll"
     this.refs.searchForm.className="gearOptionsSearch"
   },
-  //  SEARCH MODAL END **********
   getZipCode() {
     var currentZip = this.state.currentZip
     var urlToFindZip = "https://maps.googleapis.com/maps/api/geocode/json?address="+currentZip+"&key=AIzaSyDz0Z4OLAAZrhyHLh8JEkGhkntNYivudBM"
@@ -116,7 +117,6 @@ export default React.createClass({
             placeholder="Search by item name or keyword"
             onChange={this.onSearchInfoChange}
             type="text"/>
-
         </form>
         <div className="gearListPanesAll" ref="gearListPanesAll">
           <div className="gearListPane">
@@ -193,6 +193,8 @@ export default React.createClass({
                       <div className="listPageItems">
                         <button className="listingPageDataContact" onClick={this.openContactModal}  value={listing._id}>Details
                         </button>
+                        <p className="listingPageData">
+                          <b>{listing.type}</b></p>
                         <p className="listingPageData">{listing.item}</p>
                       </div>
                     )}
