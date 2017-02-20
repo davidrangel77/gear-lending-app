@@ -1,7 +1,7 @@
 import React from 'react'
 import Footer from './footer'
 import Header from './header'
-import {} from './firebaseAuth'
+import { fbSignInWithRedirect, fbUpdateUser, fbAuthStateChanged, fbSetupSignoutCallback, fbWhenUserUpdated } from './firebaseAuth'
 
 export default React.createClass({
   getInitialState() {
@@ -17,8 +17,8 @@ export default React.createClass({
     }
   },
   componentDidMount() {
-   this.setState({provider: new firebase.auth.GoogleAuthProvider()});
-   firebase.auth().onAuthStateChanged((authUser) => {
+  //  this.setState({provider: new firebase.auth.GoogleAuthProvider()});
+   fbAuthStateChanged((authUser) => {
      if (authUser) { // Signed in successfully
        var signOutButton = document.querySelector("[data-js='nav__signOut']")
        if (signOutButton.className == "nav__signOut--hide") {
@@ -34,10 +34,9 @@ export default React.createClass({
          lastLogin: today
        }
 
-       firebase.database().ref().update(currentUser)
-
+       fbUpdateUser(currentUser)
        // This sets up a callback once firebase reports that /users/{user.uid} has a value
-       firebase.database().ref("/users/" + authUser.uid).once("value").then((snapshot) => {
+       fbWhenUserUpdated(authUser.uid, (snapshot) => {
          var snapshotReturn = snapshot.val()
          this.setState({
            user: {
@@ -60,22 +59,10 @@ export default React.createClass({
 
   },
   signUserIn() {
-   firebase.auth().signInWithRedirect(this.state.provider);
-   firebase.auth().getRedirectResult().then((result) => {
-     if(result.credential) {
-       var token = result.credential.accessToken;
-     }
-
-   }).catch((error) => {
-     var errorCode = error.code;
-     var errorMessage = error.message;
-     var email = error.email;
-     var credential = error.credential;
-     console.log("ERROR authenticating with firebase: " + errorMessage);
-   });
+   fbSignInWithRedirect()
   },
   signUserOut() {
-   firebase.auth().signOut().then(() => {
+   fbSetupSignoutCallback(() => {
      this.setState({
        user: {
          authed: false,
