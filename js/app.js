@@ -17,7 +17,6 @@ export default React.createClass({
     }
   },
   componentDidMount() {
-  //  this.setState({provider: new firebase.auth.GoogleAuthProvider()});
    fbAuthStateChanged((authUser) => {
      if (authUser) { // Signed in successfully
        var signOutButton = document.querySelector("[data-js='nav__signOut']")
@@ -35,7 +34,7 @@ export default React.createClass({
        }
 
        fbUpdateUser(currentUser)
-       // This sets up a callback once firebase reports that /users/{user.uid} has a value
+       
        fbWhenUserUpdated(authUser.uid, (snapshot) => {
          var snapshotReturn = snapshot.val()
          this.setState({
@@ -48,12 +47,6 @@ export default React.createClass({
            }
          });
        });
-   }
-   else { // signed out or something went wrong
-     var signOutButton = document.querySelector("[data-js='nav__signOut']")
-     if(signOutButton.className == "nav__signOut"){
-       signOutButton.className = "nav__signOut--hide"
-     }
    }
   })
 
@@ -77,8 +70,8 @@ export default React.createClass({
 
   render() {
     return (
-      <section id="wrap" className="app">
-        <div id="main">
+      <section id="wrap" ref="app">
+        <div id="main" ref="main">
           <Header user={this.state.user}
                   signUserIn={this.signUserIn}
                   signUserOut={this.signUserOut}/>

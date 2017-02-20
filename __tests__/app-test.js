@@ -1,26 +1,29 @@
 import React from 'react'
 import TestUtils from 'react-addons-test-utils'
-import Lend from '../js/lend'
+import App from '../js/app'
 
 jest.mock('../js/firebaseAuth')
 
-describe("lend", () => {
-  let lendComponent = {}
+describe("app", () => {
+  let appComponent = {}
 
   beforeEach(() =>{
-    lendComponent = TestUtils.renderIntoDocument(<Lend />)
+    appComponent = TestUtils.renderIntoDocument(<App />)
   })
   it("Should have a section", () => {
+    let appSection = appComponent.refs.app
 
-    expect(lendComponent).toBeDefined()
-    const section = TestUtils.findRenderedDOMComponentWithClass(
-      lendComponent,
-      "lendPage"
-    )
+    expect(appSection).toBeDefined()
   })
-  it("Should have an input for email address", ()=> {
+  it("Should have a user state object", () => {
+    let state = appComponent.state.user
 
-    let emailInput = lendComponent.refs.userEmailInput
-    expect(emailInput).toBeDefined()
+    expect(state).toMatchObject({
+      authed: false,
+      name: '',
+      email: '',
+      picture: '',
+      lastLogin: undefined
+    })
   })
 })

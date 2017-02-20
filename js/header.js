@@ -8,6 +8,8 @@ export default React.createClass({
   },
 
   render() {
+    var signoutButtonClass = this.props.user.authed ? "nav__signOut" : "nav__signout--hide"
+
     return (
       <section className="headerBackground">
         <div className="headerBranding" onClick={this.linkToHome}>
@@ -19,7 +21,7 @@ export default React.createClass({
           <button className="nav__signIn"
               onClick={this.props.signUserIn}
               data-js="nav__signIn"> Log In </button>
-          <button className="nav__signOut--hide"
+            <button className={signoutButtonClass}
               onClick={this.props.signUserOut}
               data-js="nav__signOut"> Log Out</button>
         </div>

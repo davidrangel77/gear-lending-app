@@ -6,7 +6,6 @@ import Landing from './landing'
 import Borrow from './borrow'
 import Lend from './lend'
 import MyGear from './myGear'
-import SignIn from './signIn'
 
 
 render(
@@ -17,7 +16,6 @@ render(
         <Route path="/borrow" component={ Borrow } />
         <Route path="/lend" component={ Lend } />
         <Route path="/myGear" component={ MyGear }/>
-        <Route path="/signIn" component={ SignIn }/>
       </Route>
     </Router>
   ),

@@ -114,6 +114,7 @@ export default React.createClass({
             onSubmit={this.searchModal}
             ref="searchForm">
           <input className="gearOptionsSearchInput"
+            ref="gearSearchBar"
             placeholder="Search by item name or keyword"
             onChange={this.onSearchInfoChange}
             type="text"/>

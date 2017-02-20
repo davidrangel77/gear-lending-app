@@ -142,7 +142,7 @@ export default React.createClass({
             <div className="myGear">
               <h1 className="myGearName">{this.state.name}</h1>
               <h2 className="myGearEmail">{this.state.email}</h2>
-              <div>
+              <div ref="myGearList">
                 {
                   this.state.postingsList.map((listing, i)=>{
                     var currentEmail = this.state.email

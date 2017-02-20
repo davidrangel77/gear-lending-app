@@ -13,4 +13,8 @@ describe("borrow", () => {
       sectionComponent, "gearOptionsPage")
     expect(section).toBeDefined()
   })
+  it ("Should have a search bar with type text", () => {
+    let searchBarType = sectionComponent.refs.gearSearchBar.type
+    expect(searchBarType).toBe("text")
+  })
 })
