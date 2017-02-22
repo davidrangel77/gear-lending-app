@@ -62,6 +62,10 @@ Link {
   right: 13.5rem;
   width: 2rem;
 }
+.nav__signout--hide {
+  display: none;
+}
+
 .nav__signIn, .nav__signOut {
     background-color: #6C7A89;
     border: solid 1px;
@@ -79,9 +83,7 @@ Link {
     cursor: pointer;
     transition: color 0.6s, background-color 0.6s;
 }
-.nav__signOut--hide {
-  display: none;
-}
+
 .myGearLink {
   color: white;
   position: absolute;

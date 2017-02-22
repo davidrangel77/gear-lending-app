@@ -3,12 +3,14 @@ import { Link } from 'react-router'
 import { hashHistory } from 'react-router'
 
 export default React.createClass({
+
   linkToHome(){
     hashHistory.push("/")
   },
 
   render() {
-    var signoutButtonClass = this.props.user.authed ? "nav__signOut" : "nav__signout--hide"
+    var signoutButtonClass
+     = this.props.user.authed ? "nav__signOut" : "nav__signout--hide"
 
     return (
       <section className="headerBackground">
