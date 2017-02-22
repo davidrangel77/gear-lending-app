@@ -134,19 +134,22 @@ export default React.createClass({
   backToLendPage() {
     hashHistory.push("/lend")
   },
+
   render() {
+    var currentEmail = this.props.user.authed ? this.state.email : null
+    var currentName = this.props.user.authed ? this.state.name : null
+
     return (
       <section className="gearOptionsPage">
         <div className="myGearAll">
           <div className={this.getModalOpenState() ? "hidden" : "visible"}>
             <div className="myGear">
-              <h1 className="myGearName">{this.state.name}</h1>
-              <h2 className="myGearEmail">{this.state.email}</h2>
+              <h1 className="myGearName">{currentName}</h1>
+              <h2 className="myGearEmail">{currentEmail}</h2>
               <div ref="myGearList">
                 {
                   this.state.postingsList.map((listing, i)=>{
-                    var currentEmail = this.state.email
-                    if (listing.email === currentEmail){
+                    if (this.props.user.authed === true && listing.email === this.state.email){
                     return (
                       <div key={i} className="listPageItems">
                         <button className="myGearUpdateButton" onClick={this.updateGear}  value={listing._id}>Update
