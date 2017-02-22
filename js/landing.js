@@ -10,6 +10,7 @@ export default React.createClass({
   },
   linkToLend(){
     hashHistory.push("/lend")
+    console.log("whatever");
   },
   linkToBorrow(){
     hashHistory.push("/borrow")
@@ -20,7 +21,8 @@ export default React.createClass({
       <section className="landingPage" >
         <div className="landingButtons">
           <div className="landingButtonLend hvr-underline-from-center"
-                onClick={this.linkToLend}>
+                onClick={this.linkToLend}
+                ref="lendButton">
             <p className="landingButtonText">LEND</p>
           </div>
           <div className="landingButtonBorrow hvr-underline-from-center"

@@ -182,7 +182,7 @@ export default React.createClass({
             }
           </div>
         </div>
-        <div className="modalPosition">
+        <div className="modalPositionSearch">
           <div className={this.getSearchModalOpenState() ? "visible" : "hidden"}>
             <div className="gearSearchModal">
               <h1 className="gearListPaneTitle">Results</h1>

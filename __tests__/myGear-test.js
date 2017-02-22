@@ -14,9 +14,9 @@ describe("myGear", () => {
     let displayArea = myGearComponent.refs.myGearList
     expect(displayArea).toBeDefined()
   })
-  it("have an array for JSON data in state", ()=> {
-    let JSONdataArray = myGearComponent.state.postingsList
+  it("have an object for JSON data in state", ()=> {
+    let JSONdataObject = myGearComponent.state.postingsList
 
-    expect(JSONdataArray).toMatchObject([])
+    expect(JSONdataObject).toEqual(expect.anything())
   })
 })
