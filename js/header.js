@@ -11,6 +11,8 @@ export default React.createClass({
   render() {
     var signoutButtonClass
      = this.props.user.authed ? "nav__signOut" : "nav__signout--hide"
+     var userImage
+     = this.props.user.authed ? "nav__currentUserImage" : "nav__signout--hide"
 
     return (
       <section className="headerBackground">
@@ -19,7 +21,7 @@ export default React.createClass({
           <p className="headerBrandingText">...a place to share</p>
         </div>
         <div>
-          <img className="nav__currentUserImage" src={this.props.user.picture} />
+          <img className={userImage} src={this.props.user.picture} />
           <button className="nav__signIn"
               onClick={this.props.signUserIn}
               data-js="nav__signIn"> Log In </button>

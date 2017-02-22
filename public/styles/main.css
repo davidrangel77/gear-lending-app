@@ -431,6 +431,7 @@ Link {
   width: 29.75em;
   opacity: 0.9;
   overflow: scroll;
+  height: 100%;
 }
 .closeSearchButton {
   border: none;
@@ -440,6 +441,17 @@ Link {
   height: 2.5em;
   width: 100%;
   bottom: 0;
+}
+.modalPositionSearch {
+  border-radius: 15px;
+  box-shadow: 5px 5px 20px;
+  display: inline-block;
+  position: absolute;
+  overflow: scroll;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-height: 100%;
 }
 /******** GEAR OPTIONS MODAL********/
 .modalPosition {
