@@ -49,6 +49,7 @@ export default React.createClass({
     this.setState({isModalOpen: false})
     this.setState({currentLat:'40.702147', currentLong:'-74.015794'})
     this.refs.mapImage.className="hidden"
+    this.refs.locationButton.className="locationButton"
   },
   getModalOpenState(){
     return this.state.isModalOpen
@@ -79,6 +80,7 @@ export default React.createClass({
       error: this.error
     })
     this.refs.mapImage.className="visible modalMap"
+    this.refs.locationButton.className="hidden"
   },
   // look into using the results from response instead of setiing state object
   logZip(response) {
