@@ -341,6 +341,7 @@ Link {
   min-height: 76.5vh;
 }
 .listPageItems{
+  background-color: #6C7A89;
   width: 90%;
   margin-left: auto;
   margin-right: auto;
@@ -369,7 +370,7 @@ Link {
 }
 .gearListPanesAll{
   position: relative;
-  width: 80%;
+  width: 70%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -379,7 +380,7 @@ Link {
   background-color: #6C7A89;
   display: inline-block;
   height: 14em;
-  width: 29.75em;
+  width: 26em;
   opacity: 0.9;
   overflow: scroll;
   margin: 1em;
