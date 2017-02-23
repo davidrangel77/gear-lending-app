@@ -345,7 +345,8 @@ Link {
   width: 90%;
   margin-left: auto;
   margin-right: auto;
-  overflow: scroll;
+  overflow-y: hidden;
+  overflow-x: scroll;
 }
 .listingPageData {
   font-size: 1em;
@@ -370,7 +371,7 @@ Link {
 }
 .gearListPanesAll{
   position: relative;
-  width: 70%;
+  width: 60em;
   margin-left: auto;
   margin-right: auto;
 }
@@ -380,9 +381,10 @@ Link {
   background-color: #6C7A89;
   display: inline-block;
   height: 14em;
-  width: 26em;
+  width: 28em;
   opacity: 0.9;
-  overflow: scroll;
+  overflow-x:hidden;
+  overflow-y: scroll;
   margin: 1em;
 }
 .gearListPaneTitle {
