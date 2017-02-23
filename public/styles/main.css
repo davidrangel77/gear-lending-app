@@ -346,7 +346,7 @@ Link {
   margin-left: auto;
   margin-right: auto;
   overflow-y: hidden;
-  overflow-x: scroll;
+  overflow-x: auto;
 }
 .listingPageData {
   font-size: 1em;
