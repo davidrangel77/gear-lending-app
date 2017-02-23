@@ -60,7 +60,8 @@ export default React.createClass({
   getSearchModalOpenState(){
     return this.state.isSearchModalOpen
   },
-  searchModal(){
+  searchModal(e){
+    e.preventDefault()
     this.setState({isSearchModalOpen:true})
     this.refs.gearListPanesAll.className="hidden"
     this.refs.searchForm.className="hidden"
